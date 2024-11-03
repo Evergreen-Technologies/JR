@@ -154,7 +154,7 @@ export default function Home() {
           type="submit"
           onClick={handleSubmit}
           className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10"
-          // disabled={!save}
+          disabled={!save}
         >
           Submit
         </button>
