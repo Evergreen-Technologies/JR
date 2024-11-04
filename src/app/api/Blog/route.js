@@ -11,7 +11,7 @@ export async function GET(request) {
 export async function POST(request) {
   await connectDB();
   const BlogData = await request.json();
-  const Blog = await Materials.create(BlogData);
+  const Blog = await Blog.create(BlogData);
   return NextResponse.json(Blog);
 }
 

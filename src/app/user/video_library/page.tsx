@@ -32,7 +32,7 @@ const Page = () => {
           {render.map((content, index) => (
             <li key={index} className="w-full pb-4">
               <div className="flex flex-col  w-full">
-                <div className=" flex justify-between px-36 w-[80%] border border-black mx-auto items-center rounded-full p-2">
+                <div className=" flex justify-between px-36 w-[80%] border-b-[2px] border-black mx-auto items-center rounded-full p-2">
                   <video
                     controls
                     poster={content.imageUrl}
