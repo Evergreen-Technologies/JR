@@ -5,6 +5,7 @@ import { CSSProperties } from "react";
 import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
 import axios from "axios";
+import React from "react";
 
 export default function Home() {
   interface form {
@@ -153,11 +154,8 @@ export default function Home() {
         <button
           type="submit"
           onClick={handleSubmit}
-<<<<<<< Updated upstream
-          className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 border-none"
-=======
-          className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 outline-none border-none"
->>>>>>> Stashed changes
+          // className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 border-none"
+          className="border border-gray-600 bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-sm  h-10 outline-none border-solid"
           disabled={!save}
         >
           Submit

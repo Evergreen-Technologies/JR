@@ -10,13 +10,13 @@ const page = () => {
   interface post {
     title: string;
     post: string;
-    date: Date;
+    date: string;
   }
 
   const [post, setPost] = useState<post>({
     title: "this is title",
     post: "this is the content of the post!",
-    date: new Date(),
+    date: "Hello",
   });
 
   const handleSubmit = async () => {
@@ -25,7 +25,11 @@ const page = () => {
       const response = await axios.post("/api/Blog", post);
       console.log("submitted SuccesFully:", response.data);
     } catch (err) {
-      console.error(err);
+      if (axios.isAxiosError(err)) {
+        console.error("Axios error:", err.response?.data || err.message);
+      } else {
+        console.error("Unexpected error:", err);
+      }
     }
   };
 
