@@ -153,7 +153,11 @@ export default function Home() {
         <button
           type="submit"
           onClick={handleSubmit}
+<<<<<<< Updated upstream
           className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 border-none"
+=======
+          className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 outline-none border-none"
+>>>>>>> Stashed changes
           disabled={!save}
         >
           submit
