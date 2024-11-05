@@ -7,7 +7,7 @@ const Adminnavbar = () => {
   console.log(current_path2);
   const links = [
     { label: "Home", href: "/admin" },
-    { label: "Upload Content", href: "/admin/upload_content" },
+    { label: "Manage Content", href: "/admin/upload_content" },
     { label: "Manage Blog", href: "/admin/blog" },
     { label: "Manage Events", href: "/admin/events" },
   ];

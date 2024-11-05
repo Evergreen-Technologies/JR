@@ -16,6 +16,6 @@ const formSchema = new mongoose.Schema({
 });
 
 const Material =
-  mongoose.models.Material || mongoose.model("Material", formSchema);
+  mongoose.models.Materials || mongoose.model("Materials", formSchema);
 
 export default Material;
