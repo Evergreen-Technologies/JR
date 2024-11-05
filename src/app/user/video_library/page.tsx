@@ -7,8 +7,18 @@ import ReactPlayer from "react-player/lazy";
 import Video from "next-video";
 import Plyr from "plyr-react";
 import "plyr/dist/plyr.css";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import { Progress } from "@/components/ui/progress";
+import { setSourceMapsEnabled } from "process";
 
 // import { CldVideoPlayer } from "next-cloudinary";
 // import "next-cloudinary/dist/cld-video-player.css";
@@ -43,7 +53,7 @@ const Page = () => {
         {!render[0] && <Progress value={progress} className="w-[10%] " />}
 
         {render.map((vid: any, index: number) => (
-          <div className="w-[400px] h-[380px]  rounded-[12px] flex items-center justify-center shadow-xl relative">
+          <div className="rounded-[12px] flex items-center justify-center shadow-xl  h-[380px] w-[400px] relative">
             <Plyr
               source={{
                 type: "video",
@@ -69,6 +79,38 @@ const Page = () => {
             <div className="absolute bottom-0 h-20 transition-all ease-in-out bg-gray-300 text-black opacity-100 w-full flex items-center justify-center rounded-b-[12px] ">
               {vid.title}
             </div>
+            <Dialog>
+              <DialogTrigger asChild>
+                <div className="absolute top-0 bottom-0 right-0 left-0 border border-blac"></div>
+              </DialogTrigger>
+              <DialogContent className="sm:max-w-[1000px] border-none p-0 rounded-md">
+                <div className="w-full h-full">
+                  <Plyr
+                    source={{
+                      type: "video",
+                      sources: [
+                        {
+                          src: vid.videoUrl,
+                          type: "video/mp4",
+                        },
+                      ],
+                    }}
+                    options={{
+                      autoplay: true,
+                      controls: [
+                        "play-large",
+                        "play",
+                        "progress",
+                        "current-time",
+                        "mute",
+                        "volume",
+                        "fullscreen",
+                      ],
+                    }}
+                  />
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         ))}
       </div>

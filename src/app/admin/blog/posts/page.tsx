@@ -96,7 +96,7 @@ const page = () => {
             >
               {post.title}
             </p>
-            <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-full flex items-center text-[16px] py-3">
+            <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
               {post.post.length > 200
                 ? `${post.post.slice(0, 200)} ....`
                 : post.post}
