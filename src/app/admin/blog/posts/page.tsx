@@ -7,6 +7,7 @@ import Delete from "../../../../../public/delete.svg";
 import Edit from "../../../../../public/edit.svg";
 import Suspend from "../../../../../public/suspend.svg";
 import { Progress } from "@/components/ui/progress";
+import Link from "next/link";
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -32,21 +33,6 @@ const page = () => {
     }
   };
 
-  //
-
-  // const deletePost = async (id: any) => {
-  //   try {
-  //     const response = await fetch(`/api/Blog/${id}`, { method: "DELETE" });
-  //     if (!response.ok) {
-  //       throw new Error(`Error: ${response.statusText}`);
-  //     }
-  //     const updatedPosts = posts.filter((post: any) => post.id !== id);
-  //     setposts(updatedPosts.reverse());
-  //     console.log("Post deleted successfully:", await response.json());
-  //   } catch (error) {
-  //     console.error("Error deleting post:", error);
-  //   }
-  // };
   const deletePost = async (id: any) => {
     try {
       // Update the fetch request to send the id in the request body
@@ -89,7 +75,11 @@ const page = () => {
           </div>
         )}
         {posts.map((post: any, index: number) => (
-          <li key={index} className="w-full  shadow-lg rounded-[20px] p-10">
+          <Link
+            key={index}
+            className="w-full  shadow-lg rounded-[20px] p-10"
+            href={`/admin/blog/${post._id}`}
+          >
             <p
               className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
             "
@@ -143,7 +133,7 @@ const page = () => {
                 </div>
               </div>
             </div>
-          </li>
+          </Link>
         ))}
       </ul>
     </div>

@@ -8,6 +8,18 @@ export async function GET(request) {
   return NextResponse.json(Blog);
 }
 
+export async function GETById(request, { params }) {
+  await connectDB();
+
+  const { id } = params;
+  const video = await Blogs.findById(id);
+
+  if (!video) {
+    return new Response("Video not found", { status: 404 });
+  }
+
+  return NextResponse.json(video);
+}
 export async function POST(request) {
   await connectDB();
   const BlogData = await request.json();
