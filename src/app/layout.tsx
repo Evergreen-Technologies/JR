@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar/Navbar";
 import Adminnavbar from "@/components/Navbar/Adminnavbar";
 
 import { usePathname } from "next/navigation";
+import BlogNavbar from "@/components/Navbar/BlogNavbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -29,15 +30,34 @@ export default function RootLayout({
 
   // Ensure consistent rendering logic
   const isAdminPath = curent_path.includes("admin");
+  const isAdminPathBlog = curent_path.includes("admin/blog");
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {isAdminPath ? <Adminnavbar /> : <Navbar />}
+        {isAdminPath && !isAdminPathBlog ? (
+          <>
+            <Adminnavbar />
+            {children}
+          </>
+        ) : isAdminPathBlog ? (
+          <>
+            <Adminnavbar />
+            <div className="flex lg:container lg:mx-auto pt-20 justify-between">
+              <BlogNavbar />
+              {children}
+            </div>
+          </>
+        ) : (
+          <>
+            <Navbar />
+            {children}
+          </>
+        )}
 
-        {children}
+        {/* {children} */}
       </body>
     </html>
   );
