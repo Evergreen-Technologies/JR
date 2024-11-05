@@ -5,7 +5,7 @@ import { CSSProperties } from "react";
 import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
 import axios from "axios";
-import React from "react";
+import { title } from "process";
 
 export default function Home() {
   interface form {
@@ -35,7 +35,7 @@ export default function Home() {
 
   const save =
     Boolean(form.title) && Boolean(form.imageUrl) && Boolean(form.videoUrl);
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
     console.log(form);
     try {
       const response = await axios.post("/api/Materials", form);
@@ -64,9 +64,11 @@ export default function Home() {
           </label>
           <input
             type="text"
-            className="border border-solid border-black bg-gray-900 h-12 rounded-[8px] outline-none pl-5"
+            className="border border-solid border-black bg-gray-900 h-12 rounded-[8px] outline-none pl-5 text-white"
             value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            onChange={(e) =>
+              setForm((prevForm) => ({ ...prevForm, title: e.target.value }))
+            }
             required
           />
         </div>
@@ -80,7 +82,7 @@ export default function Home() {
             endpoint="attachImage"
             onClientUploadComplete={(res) => {
               console.log("Files: ", res);
-              setForm({ ...form, imageUrl: res[0].appUrl });
+              setForm((prevForm) => ({ ...prevForm, imageUrl: res[0].appUrl }));
             }}
             onUploadError={(error: Error) => {
               alert(`ERROR! ${error.message}`);
@@ -119,7 +121,7 @@ export default function Home() {
             endpoint="attachVideo"
             onClientUploadComplete={(res) => {
               console.log("Files: ", res);
-              setForm({ ...form, videoUrl: res[0].appUrl });
+              setForm((prevForm) => ({ ...prevForm, videoUrl: res[0].appUrl }));
               alert("Upload Completed");
             }}
             onUploadError={(error: Error) => {
@@ -154,11 +156,10 @@ export default function Home() {
         <button
           type="submit"
           onClick={handleSubmit}
-          // className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 border-none"
-          className="border border-gray-600 bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-sm  h-10 outline-none border-solid"
-          disabled={!save}
+          className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 outline-none border-none"
+          // disabled={!save}
         >
-          Submit
+          submit
         </button>
       </form>
     </main>

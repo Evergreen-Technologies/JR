@@ -5,7 +5,7 @@ import { CSSProperties } from "react";
 import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
 import axios from "axios";
-import React from "react";
+import { title } from "process";
 
 export default function Home() {
   interface form {
@@ -35,7 +35,7 @@ export default function Home() {
 
   const save =
     Boolean(form.title) && Boolean(form.imageUrl) && Boolean(form.videoUrl);
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: any) => {
     console.log(form);
     try {
       const response = await axios.post("/api/Materials", form);
@@ -49,11 +49,12 @@ export default function Home() {
       // Handle error (e.g., show error message)
     }
   };
+
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-24">
+    <main className="flex min-h-screen flex-col items-center justify-center p-24 pt-10">
       <form
         action=""
-        className="flex flex-col font-plus border border-gray-600 w-[600px] p-10 rounded-[10px] gap-y-16"
+        className="flex flex-col font-plus  w-[600px] p-10 rounded-[10px] gap-y-16 shadow-2xl"
         onSubmit={(e) => {
           e.preventDefault();
         }}
@@ -64,9 +65,11 @@ export default function Home() {
           </label>
           <input
             type="text"
-            className="border border-solid border-black bg-gray-900 h-12 rounded-[8px] outline-none pl-5 text-white"
+            className="border border-solid border-gray-300  h-12 rounded-[8px] outline-none pl-5 text-black"
             value={form.title}
-            onChange={(e) => setForm({ ...form, title: e.target.value })}
+            onChange={(e) =>
+              setForm((prevForm) => ({ ...prevForm, title: e.target.value }))
+            }
             required
           />
         </div>
@@ -74,29 +77,32 @@ export default function Home() {
         <div className="flex flex-col">
           <label htmlFor="" className="font-plus pb-2">
             Upload Thumbnail
-            {/* <span className="text-red-500"> (Optional)</span> */}
+            <span className="text-red-500"> (Optional)</span>
           </label>
           <UploadDropzone
             endpoint="attachImage"
             onClientUploadComplete={(res) => {
               console.log("Files: ", res);
-              setForm({ ...form, imageUrl: res[0].appUrl });
+              setForm((prevForm) => ({ ...prevForm, imageUrl: res[0].appUrl }));
             }}
             onUploadError={(error: Error) => {
               alert(`ERROR! ${error.message}`);
             }}
-            className="px-16 bg-gray-900 rounded-[8px] border-none p-5"
+            className="px-16 border border-gray-300 rounded-[8px] p-5"
             appearance={{
               uploadIcon: {
-                contentVisibility: "hidden",
+                backgroundColor: "gray",
+                borderRadius: "50%",
+                marginTop: "30px",
               },
               allowedContent: {
-                contentVisibility: "hidden",
+                // contentVisibility: "hidden",
+                color: "black",
               },
               button: {
                 position: "relative",
                 top: "70px",
-                backgroundColor: "white",
+                backgroundColor: "#cfcdcd",
                 paddingTop: "20px",
                 paddingBottom: "20px",
                 paddingRight: "20px",
@@ -104,7 +110,7 @@ export default function Home() {
                 borderRadius: "7px",
                 color: "black",
                 fontWeight: "bold",
-                width: "132%",
+                width: "110%",
                 // content: "upload file",
               },
             }}
@@ -113,31 +119,35 @@ export default function Home() {
         <div className="flex flex-col gap-y-2">
           <label htmlFor="" className="font-plus pb-2">
             Upload Video
-            {/* <span className="text-red-500"> (Optional)</span> */}
+            <span className="text-red-500"> (Optional)</span>
           </label>
           <UploadDropzone
             endpoint="attachVideo"
             onClientUploadComplete={(res) => {
               console.log("Files: ", res);
-              setForm({ ...form, videoUrl: res[0].appUrl });
+              setForm((prevForm) => ({ ...prevForm, videoUrl: res[0].appUrl }));
               alert("Upload Completed");
             }}
             onUploadError={(error: Error) => {
               alert(`ERROR! ${error.message}`);
             }}
-            className="px-16 bg-gray-900 rounded-[8px] border-none p-5"
+            className="px-16 border border-gray-300 rounded-[8px] p-5"
             appearance={{
               uploadIcon: {
-                backgroundColor: "red",
-                contentVisibility: "hidden",
+                backgroundColor: "gray",
+                borderRadius: "50%",
+                marginTop: "30px",
+
+                // contentVisibility: "hidden",
               },
               allowedContent: {
-                contentVisibility: "hidden",
+                // contentVisibility: "hidden",
+                color: "black",
               },
               button: {
                 position: "relative",
                 top: "70px",
-                backgroundColor: "white",
+                backgroundColor: "#cfcdcd",
                 paddingTop: "20px",
                 paddingBottom: "20px",
                 paddingRight: "20px",
@@ -145,7 +155,7 @@ export default function Home() {
                 borderRadius: "8px",
                 color: "black",
                 fontWeight: "bold",
-                width: "135%",
+                width: "110%",
                 content: "upload file",
               },
             }}
@@ -154,13 +164,12 @@ export default function Home() {
         <button
           type="submit"
           onClick={handleSubmit}
-          // className="border border-white bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-md h-10 border-none"
-          className="border border-gray-600 bg-[#0a660a] text-black font-bold disabled:bg-white disabled:text-gray-500 rounded-sm  h-10 outline-none border-solid"
-          // disabled={!save}
+          className="border border-white bg-[#cfcdcd] text-black disabled:text-gray-400 font-bold  rounded-sm h-10 outline-none disabled:rounded-md"
+          disabled={!save}
         >
-          Submit
+          submit
         </button>
       </form>
-    </div>
+    </main>
   );
 }
