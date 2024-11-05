@@ -47,6 +47,9 @@ const page = () => {
         throw new Error(`Error: ${response.statusText}`);
       }
       const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
+      if (updatedPosts.length == 0) {
+        window.location.href = "/admin/blog";
+      }
       setposts(updatedPosts);
       console.log("Post deleted successfully:", await response.json());
     } catch (error) {
@@ -75,22 +78,20 @@ const page = () => {
           </div>
         )}
         {posts.map((post: any, index: number) => (
-          <Link
-            key={index}
-            className="w-full  shadow-lg rounded-[20px] p-10"
-            href={`/admin/blog/${post._id}`}
-          >
-            <p
-              className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
+          <div className="w-full  shadow-lg rounded-[20px] p-10">
+            <Link key={index} className="" href={`/admin/blog/${post._id}`}>
+              <p
+                className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
             "
-            >
-              {post.title}
-            </p>
-            <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
-              {post.post.length > 200
-                ? `${post.post.slice(0, 200)} ....`
-                : post.post}
-            </p>
+              >
+                {post.title}
+              </p>
+              <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
+                {post.post.length > 200
+                  ? `${post.post.slice(0, 200)} ....`
+                  : post.post}
+              </p>
+            </Link>
             <div className="flex justify-end pt-5">
               <div className="w-1/3 flex justify-start gap-x-3">
                 {current_path.includes("admin") && (
@@ -133,7 +134,7 @@ const page = () => {
                 </div>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
       </ul>
     </div>

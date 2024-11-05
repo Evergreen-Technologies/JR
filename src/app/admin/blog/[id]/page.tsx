@@ -27,7 +27,7 @@ const page = () => {
 
   const fetchPost = async () => {
     try {
-      //   const { id } = useParams();
+      console.log(id);
       const response = await fetch("/api/Blog");
       const data = await response.json();
       const selectById = data.find((post: any) => post._id == id);

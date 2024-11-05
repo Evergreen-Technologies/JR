@@ -50,7 +50,11 @@ const Page = () => {
   return (
     <div className="lg:container lg:w-full lg:mx-auto mx-[20px] min-h-[93vh]  mt-10 rounded-[30px] shadow-2xl">
       <div className="flex flex-wrap gap-10 justify-center items-center w-full p-10">
-        {!render[0] && <Progress value={progress} className="w-[10%] " />}
+        {!render[0] && (
+          <div className="w-[90%] pt-10">
+            <Progress value={progress} className="w-[10%] " />
+          </div>
+        )}
 
         {render.map((vid: any, index: number) => (
           <div className="rounded-[12px] flex items-center justify-center shadow-xl  h-[380px] w-[400px] relative">
@@ -84,7 +88,7 @@ const Page = () => {
                 <div className="absolute top-0 bottom-0 right-0 left-0 border border-blac"></div>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[1000px] border-none p-0 rounded-md">
-                <div className="w-full h-full">
+                <div className="w-full h-full m-0">
                   <Plyr
                     source={{
                       type: "video",
