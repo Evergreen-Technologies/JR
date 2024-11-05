@@ -1,6 +1,11 @@
 "use client";
+import PlayIcon from "@/components/PlayIcon";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import React from "react";
+import ReactPlayer from "react-player/lazy";
+// import { CldVideoPlayer } from "next-cloudinary";
+// import "next-cloudinary/dist/cld-video-player.css";
 
 const Page = () => {
   const [render, setRender] = useState([
@@ -26,31 +31,20 @@ const Page = () => {
     render_video_library();
   }, []);
   return (
-    <div className="lg:container lg:w-full lg:mx-auto mx-[20px] h-[93vh]">
-      <div className="flex items-center justify-center h-[100%]">
-        <ul className="w-full">
-          {render.map((content, index) => (
-            <li key={index} className="w-full pb-4">
-              <div className="flex flex-col  w-full">
-                <div className=" flex justify-between px-36 w-[80%] border-b-[2px] border-black mx-auto items-center rounded-full p-2">
-                  <video
-                    controls
-                    poster={content.imageUrl}
-                    className="w-[300px] h-[120px]"
-                  >
-                    <source src={content.videoUrl} type="video/webm" />
-                  </video>
-                  <div className="w-1/3">
-                    <p className="flex justify-start w-full">{content.title}</p>
-                  </div>
-                </div>
-              </div>
-            </li>
+    <div className="lg:container lg:w-full lg:mx-auto mx-[20px] min-h-[93vh]  mt-10 rounded-[30px] shadow-2xl">
+      <div className="flex flex-wrap gap-10 justify-center items-center w-full p-10">
+        <div className="w-[400px] h-[400px]  rounded-[12px] flex items-center justify-center shadow-xl relative">
+          {render.map((vid, index) => (
+            <div className="absolute bottom-0 h-24 transition-all ease-in-out bg-gray-300 text-black opacity-100 w-full flex items-center justify-center rounded-b-[12px] ">
+              Title
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Page;
+
+// <CldVideoPlayer width="1920" height="1080" src={vid.videoUrl} />

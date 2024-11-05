@@ -2,18 +2,19 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const page = () => {
   interface post {
     title: string;
     post: string;
-    date: string;
+    date: Date;
   }
 
   const [post, setPost] = useState<post>({
-    title: "this is title",
-    post: "this is the content of the post!",
-    date: "Hello",
+    title: "",
+    post: "",
+    date: new Date(),
   });
 
   //   const fetchPosts = async () => {
@@ -31,7 +32,11 @@ const page = () => {
     try {
       const response = await axios.post("/api/Blog", post);
       console.log("submitted SuccesFully:", response.data);
-      //   fetchPosts();
+      setPost({
+        title: "",
+        post: "",
+        date: new Date(),
+      });
     } catch (err) {
       if (axios.isAxiosError(err)) {
         console.error("Axios error:", err.response?.data || err.message);
@@ -44,6 +49,16 @@ const page = () => {
   //   useEffect(() => {
   //     fetchPosts();
   //   }, []);
+
+  const [progrees, setProgress] = useState(false);
+  const buttonEffect = () => {
+    if (post.title && post.post) {
+      setProgress(true);
+      setTimeout(() => {
+        setProgress((prevProgress) => false);
+      }, 1000);
+    }
+  };
 
   return (
     <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[40vh] shadow-2xl">
@@ -62,6 +77,7 @@ const page = () => {
             value={post.title}
             onChange={(e) => setPost({ ...post, title: e.target.value })}
             className="border border-gray-300 h-12 rounded-md pl-3 outline-none"
+            required
           />
         </div>
         <div className="flex flex-col w-full gap-y-2">
@@ -70,14 +86,28 @@ const page = () => {
             value={post.post}
             onChange={(e) => setPost({ ...post, post: e.target.value })}
             className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
+            required
           />
         </div>
         <div className="flex justify-end w-full">
           <button
-            className="bg-[#085008] font-bold text-white px-10 py-2"
-            onClick={handleSubmit}
+            className={`bg-red-700 text-white font-bold px-10 py-2 rounded-[4px] outline-none`}
+            onClick={() => {
+              handleSubmit();
+              buttonEffect();
+            }}
           >
-            Post
+            {!progrees && <>Post</>}
+            {progrees && (
+              <CircularProgress
+                style={{
+                  height: "18px",
+                  width: "20px",
+                  marginRight: "7px",
+                  marginLeft: "7px",
+                }}
+              />
+            )}
           </button>
         </div>
       </form>

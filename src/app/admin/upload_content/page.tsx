@@ -51,10 +51,10 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-24 pt-10">
+    <main className="flex min-h-screen items-center justify-center p-24 pt-10">
       <form
         action=""
-        className="flex flex-col font-plus  w-[600px] p-10 rounded-[10px] gap-y-16 shadow-2xl"
+        className="flex flex-col font-plus  w-[600px] p-10 rounded-[10px] gap-y-10 shadow-2xl"
         onSubmit={(e) => {
           e.preventDefault();
         }}
@@ -74,97 +74,104 @@ export default function Home() {
           />
         </div>
 
-        <div className="flex flex-col">
-          <label htmlFor="" className="font-plus pb-2">
-            Upload Thumbnail
-            <span className="text-red-500"> (Optional)</span>
-          </label>
-          <UploadDropzone
-            endpoint="attachImage"
-            onClientUploadComplete={(res) => {
-              console.log("Files: ", res);
-              setForm((prevForm) => ({ ...prevForm, imageUrl: res[0].appUrl }));
-            }}
-            onUploadError={(error: Error) => {
-              alert(`ERROR! ${error.message}`);
-            }}
-            className="px-16 border border-gray-300 rounded-[8px] p-5"
-            appearance={{
-              uploadIcon: {
-                backgroundColor: "gray",
-                borderRadius: "50%",
-                marginTop: "30px",
-              },
-              allowedContent: {
-                // contentVisibility: "hidden",
-                color: "black",
-              },
-              button: {
-                position: "relative",
-                top: "70px",
-                backgroundColor: "#cfcdcd",
-                paddingTop: "20px",
-                paddingBottom: "20px",
-                paddingRight: "20px",
-                paddingLeft: "20px",
-                borderRadius: "7px",
-                color: "black",
-                fontWeight: "bold",
-                width: "110%",
-                // content: "upload file",
-              },
-            }}
-          />
-        </div>
-        <div className="flex flex-col gap-y-2">
-          <label htmlFor="" className="font-plus pb-2">
-            Upload Video
-            <span className="text-red-500"> (Optional)</span>
-          </label>
-          <UploadDropzone
-            endpoint="attachVideo"
-            onClientUploadComplete={(res) => {
-              console.log("Files: ", res);
-              setForm((prevForm) => ({ ...prevForm, videoUrl: res[0].appUrl }));
-              alert("Upload Completed");
-            }}
-            onUploadError={(error: Error) => {
-              alert(`ERROR! ${error.message}`);
-            }}
-            className="px-16 border border-gray-300 rounded-[8px] p-5"
-            appearance={{
-              uploadIcon: {
-                backgroundColor: "gray",
-                borderRadius: "50%",
-                marginTop: "30px",
-
-                // contentVisibility: "hidden",
-              },
-              allowedContent: {
-                // contentVisibility: "hidden",
-                color: "black",
-              },
-              button: {
-                position: "relative",
-                top: "70px",
-                backgroundColor: "#cfcdcd",
-                paddingTop: "20px",
-                paddingBottom: "20px",
-                paddingRight: "20px",
-                paddingLeft: "20px",
-                borderRadius: "8px",
-                color: "black",
-                fontWeight: "bold",
-                width: "110%",
-                content: "upload file",
-              },
-            }}
-          />
+        <div className="space-y-[80px]">
+          <div className="flex flex-col">
+            <label htmlFor="" className="font-plus pb-2 font-medium">
+              Upload Thumbnail
+              {/* <span className="text-red-500"> (Optional)</span> */}
+            </label>
+            <UploadDropzone
+              endpoint="attachImage"
+              onClientUploadComplete={(res) => {
+                console.log("Files: ", res);
+                setForm((prevForm) => ({
+                  ...prevForm,
+                  imageUrl: res[0].appUrl,
+                }));
+              }}
+              onUploadError={(error: Error) => {
+                alert(`ERROR! ${error.message}`);
+              }}
+              className="px-16 border border-gray-300 rounded-[8px] p-5 h-[150px]"
+              appearance={{
+                uploadIcon: {
+                  // backgroundColor: "gray",
+                  borderRadius: "50%",
+                  marginTop: "30px",
+                },
+                allowedContent: {
+                  // contentVisibility: "hidden",
+                  color: "black",
+                },
+                button: {
+                  position: "relative",
+                  top: "60px",
+                  backgroundColor: "black",
+                  paddingTop: "20px",
+                  paddingBottom: "20px",
+                  paddingRight: "20px",
+                  paddingLeft: "20px",
+                  borderRadius: "7px",
+                  color: "white",
+                  fontWeight: "bold",
+                  width: "132%",
+                  // content: "upload file",
+                },
+              }}
+            />
+          </div>
+          <div className="flex flex-col gap-y-1">
+            <label htmlFor="" className="font-plus pb-2 font-medium">
+              Upload Video
+              {/* <span className="text-red-500"> (Optional)</span> */}
+            </label>
+            <UploadDropzone
+              endpoint="attachVideo"
+              onClientUploadComplete={(res) => {
+                console.log("Files: ", res);
+                setForm((prevForm) => ({
+                  ...prevForm,
+                  videoUrl: res[0].appUrl,
+                }));
+                alert("Upload Completed");
+              }}
+              onUploadError={(error: Error) => {
+                alert(`ERROR! ${error.message}`);
+              }}
+              className="px-16 border border-gray-300 rounded-[8px] p-5 h-[150px]"
+              appearance={{
+                uploadIcon: {
+                  // backgroundColor: "gray",
+                  borderRadius: "50%",
+                  marginTop: "30px",
+                  // contentVisibility: "hidden",
+                },
+                allowedContent: {
+                  // contentVisibility: "hidden",
+                  color: "black",
+                },
+                button: {
+                  position: "relative",
+                  top: "60px",
+                  backgroundColor: "black",
+                  paddingTop: "20px",
+                  paddingBottom: "20px",
+                  paddingRight: "20px",
+                  paddingLeft: "20px",
+                  borderRadius: "8px",
+                  color: "white",
+                  fontWeight: "bold",
+                  width: "132%",
+                  content: "upload file",
+                },
+              }}
+            />
+          </div>
         </div>
         <button
           type="submit"
           onClick={handleSubmit}
-          className="border border-white bg-[#cfcdcd] text-black disabled:text-gray-400 font-bold  rounded-sm h-10 outline-none disabled:rounded-md"
+          className="border border-white disabled:bg-[#cfcdcd] bg-black text-white disabled:text-gray-400 font-bold  rounded-[8px] h-10 outline-none disabled:rounded-md mt-10"
           disabled={!save}
         >
           submit
