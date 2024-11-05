@@ -42,7 +42,7 @@ const page = () => {
   //   }, []);
 
   return (
-    <div className="w-[74%] ring-1 ring-black rounded-[30px] flex justify-center items-start pt-10">
+    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[40vh] shadow-2xl">
       <form
         action=""
         // className="w-full flex justify-center"
@@ -57,7 +57,7 @@ const page = () => {
             type="text"
             value={post.title}
             onChange={(e) => setPost({ ...post, title: e.target.value })}
-            className="border border-black h-12 rounded-md pl-3"
+            className="border border-gray-300 h-12 rounded-md pl-3 outline-none"
           />
         </div>
         <div className="flex flex-col w-full gap-y-2">
@@ -65,12 +65,12 @@ const page = () => {
           <textarea
             value={post.post}
             onChange={(e) => setPost({ ...post, post: e.target.value })}
-            className="border border-black h-32 rounded-md pl-3 pt-3"
+            className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
           />
         </div>
         <div className="flex justify-end w-full">
           <button
-            className="bg-[#085008] font-bold text-white px-6 py-2"
+            className="bg-[#085008] font-bold text-white px-10 py-2"
             onClick={handleSubmit}
           >
             Post

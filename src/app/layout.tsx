@@ -45,7 +45,7 @@ export default function RootLayout({
         ) : isAdminPathBlog ? (
           <>
             <Adminnavbar />
-            <div className="flex lg:container lg:mx-auto pt-20 justify-between">
+            <div className="flex lg:container lg:mx-auto pt-10 items-start justify-between">
               <BlogNavbar />
               {children}
             </div>

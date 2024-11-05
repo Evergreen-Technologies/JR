@@ -9,8 +9,8 @@ const BlogNavbar = () => {
   const current_path3 = usePathname();
 
   return (
-    <nav className="w-[20%]  rounded-[30px] flex items-center justify-start">
-      <ul className="flex flex-col justify-center items-center gap-y-10 w-full ring-1 ring-black h-[40vh] rounded-[20px]">
+    <nav className="w-[20%]  rounded-[30px] flex items-center justify-start shadow-2xl">
+      <ul className="flex flex-col justify-start pt-12 items-center gap-y-10 w-full  h-[40vh] rounded-[20px]">
         {links.map((link, index) => (
           <li
             className={`${
