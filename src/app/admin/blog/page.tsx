@@ -3,6 +3,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
+import { Editor } from "primereact/editor";
 
 const page = () => {
   interface post {
@@ -61,7 +62,7 @@ const page = () => {
   };
 
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[40vh] shadow-2xl">
+    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl">
       <form
         action=""
         // className="w-full flex justify-center"
@@ -72,22 +73,38 @@ const page = () => {
       >
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="">Title</label>
-          <input
+          <Editor
+            value={post.title}
+            onTextChange={(e: any) =>
+              setPost({ ...post, title: e.htmlValue || "" })
+            }
+            style={{ height: "60px", fontSize: "17px" }}
+            className="  rounded-md  pt-3 outline-none"
+          />
+          {/* <input
             type="text"
             value={post.title}
             onChange={(e) => setPost({ ...post, title: e.target.value })}
             className="border border-gray-300 h-12 rounded-md pl-3 outline-none"
             required
-          />
+          /> */}
         </div>
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="">Post</label>
-          <textarea
+          <Editor
+            value={post.post}
+            onTextChange={(e: any) =>
+              setPost({ ...post, post: e.htmlValue || "" })
+            }
+            style={{ height: "320px", fontSize: "17px" }}
+            className="  rounded-md  pt-3 outline-none"
+          />
+          {/* <textarea
             value={post.post}
             onChange={(e) => setPost({ ...post, post: e.target.value })}
             className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
             required
-          />
+          /> */}
         </div>
         <div className="flex justify-end w-full">
           <button

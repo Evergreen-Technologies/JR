@@ -120,10 +120,20 @@ const page = () => {
             className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
             "
           >
-            {post.title}
+            <div
+              // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+              dangerouslySetInnerHTML={{
+                __html: post.title,
+              }}
+            />
           </p>
           <p className=" mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3 text-justify pt-10 pb-10 pl-10 pr-10">
-            {post.post}
+            <div
+              className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+              dangerouslySetInnerHTML={{
+                __html: post.post,
+              }}
+            />
           </p>
           <div className="flex justify-end pt-5">
             <div className="w-1/3 flex justify-end gap-x-3">

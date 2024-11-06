@@ -8,6 +8,7 @@ import Edit from "../../../../../public/edit.svg";
 import Suspend from "../../../../../public/suspend.svg";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
+import EmptyList from "@/../public/better.gif";
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -25,10 +26,10 @@ const page = () => {
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
-      const data = await response.json();
+      let data = await response.json();
       console.log(data);
-      // posts.length == 0 ? setCheckEmpty(true) : null;
-      setposts((prevPost) => data.reverse());
+      data.reverse();
+      setposts((prevPost) => data);
       posts.length == 0 ? setCheckEmpty(true) : null;
     } catch (err) {
       console.log("Error Fetching content:", err);
@@ -50,7 +51,7 @@ const page = () => {
       }
       const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
 
-      setposts(updatedPosts);
+      setposts(updatedPosts.reverse());
       console.log("Post deleted successfully:", await response.json());
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -78,12 +79,21 @@ const page = () => {
           </div>
         )}
         <div className="">
-          {checkEmpty && (
+          {checkEmpty && posts.length == 0 && (
             <div
-              className=" flex items-center justify-center pt-10
+              className=" flex items-center justify-center pt-10 flex-col
             "
             >
-              No Posts Yet!
+              <div>No Posts Yet!</div>
+              <div className=" pt-14">
+                <span>
+                  <Image
+                    src={EmptyList}
+                    alt="Empty List!"
+                    className="h-[60px] w-[60px]"
+                  />
+                </span>
+              </div>
             </div>
           )}
         </div>
@@ -94,13 +104,25 @@ const page = () => {
                 className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
             "
               >
-                {post.title}
+                <div
+                  // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+                  dangerouslySetInnerHTML={{
+                    __html:
+                      post.post.length > 100
+                        ? `${post.title.slice(0, 100)} ....`
+                        : post.post,
+                  }}
+                />
               </p>
-              <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
-                {post.post.length > 200
-                  ? `${post.post.slice(0, 200)} ....`
-                  : post.post}
-              </p>
+              <div
+                className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    post.post.length > 200
+                      ? `${post.post.slice(0, 200)} ....`
+                      : post.post,
+                }}
+              />
             </Link>
             <div className="flex justify-end pt-5">
               <div className="w-1/3 flex justify-start gap-x-3">
