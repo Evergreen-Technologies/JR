@@ -71,7 +71,7 @@ const page = () => {
     fetchPosts();
   }, []);
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-start pt-10 min-h-[40vh] shadow-2xl">
+    <div className="w-[74%] rounded-[30px] flex justify-center items-start  min-h-[40vh] shadow-2xl py-10">
       <ul className="w-[90%] flex flex-col item-center justify-center h-full">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full">
@@ -110,7 +110,7 @@ const page = () => {
                     __html:
                       post.post.length > 100
                         ? `${post.title.slice(0, 100)} ....`
-                        : post.post,
+                        : post.title,
                   }}
                 />
               </p>

@@ -18,16 +18,6 @@ const page = () => {
     date: new Date(),
   });
 
-  //   const fetchPosts = async () => {
-  //     try {
-  //       const response = await axios.get("/api/Blog");
-  //       const data = response.data;
-  //       setposts(data);
-  //     } catch (err) {
-  //       console.log("Error Fetching content:", err);
-  //     }
-  //   };
-
   const handleSubmit = async () => {
     console.log(post);
     try {
@@ -62,7 +52,10 @@ const page = () => {
   };
 
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl">
+    <div
+      className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
+    "
+    >
       <form
         action=""
         // className="w-full flex justify-center"
