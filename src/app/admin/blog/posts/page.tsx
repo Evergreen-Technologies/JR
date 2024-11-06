@@ -21,13 +21,15 @@ const page = () => {
     date: Date;
   }
   const [posts, setposts] = useState([]);
+  const [checkEmpty, setCheckEmpty] = useState(false);
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
       const data = await response.json();
       console.log(data);
-
-      setposts(data.reverse());
+      // posts.length == 0 ? setCheckEmpty(true) : null;
+      setposts((prevPost) => data.reverse());
+      posts.length == 0 ? setCheckEmpty(true) : null;
     } catch (err) {
       console.log("Error Fetching content:", err);
     }
@@ -35,7 +37,7 @@ const page = () => {
 
   const deletePost = async (id: any) => {
     try {
-      // Update the fetch request to send the id in the request body
+      // Update the fetch request to send the id in the request bodys
       const response = await fetch(`/api/Blog`, {
         method: "DELETE",
         headers: {
@@ -47,9 +49,7 @@ const page = () => {
         throw new Error(`Error: ${response.statusText}`);
       }
       const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
-      if (updatedPosts.length == 0) {
-        window.location.href = "/admin/blog";
-      }
+
       setposts(updatedPosts);
       console.log("Post deleted successfully:", await response.json());
     } catch (error) {
@@ -72,11 +72,21 @@ const page = () => {
   return (
     <div className="w-[74%] rounded-[30px] flex justify-center items-start pt-10 min-h-[40vh] shadow-2xl">
       <ul className="w-[90%] flex flex-col item-center justify-center h-full">
-        {!posts[0] && (
+        {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full">
             <Progress value={progress} className="w-[30%] " />
           </div>
         )}
+        <div className="">
+          {checkEmpty && (
+            <div
+              className=" flex items-center justify-center pt-10
+            "
+            >
+              No Posts Yet!
+            </div>
+          )}
+        </div>
         {posts.map((post: any, index: number) => (
           <div className="w-full  shadow-lg rounded-[20px] p-10">
             <Link key={index} className="" href={`/admin/blog/${post._id}`}>
