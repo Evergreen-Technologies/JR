@@ -61,7 +61,7 @@ const page = () => {
                 : post.post}
             </p>
             <div className="flex justify-end pt-5">
-              <div className="w-1/3 flex justify-start gap-x-3">
+              <div className="w-1/3 flex justify-end gap-x-3 pr-10">
                 {current_path.includes("admin") && (
                   <div className="flex gap-x-2 items-center">
                     <span>
@@ -89,8 +89,8 @@ const page = () => {
                     </span>
                   </div>
                 )}
-                <div>
-                  <span className="text-[14px] text-gray-500">
+                <div className="flex justify-end">
+                  <span className="text-[14px] text-gray-500 text-end">
                     {isNaN(new Date(post.date).getTime())
                       ? "Invalid date"
                       : formatDistanceToNow(new Date(post.date))}
