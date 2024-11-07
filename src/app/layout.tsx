@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 import { usePathname } from "next/navigation";
 import BlogNavbar from "@/components/Navbar/BlogNavbar";
+import EventNavbar from "@/components/Navbar/EventNavbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,13 +34,14 @@ export default function RootLayout({
   // Ensure consistent rendering logic
   const isAdminPath = curent_path.includes("admin");
   const isAdminPathBlog = curent_path.includes("admin/blog");
+  const isAdminPathEvent = curent_path.includes("admin/event");
 
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mt-10`}
       >
-        {isAdminPath && !isAdminPathBlog ? (
+        {isAdminPath && !isAdminPathBlog && !isAdminPathEvent ? (
           <>
             <Adminnavbar />
             {children}
@@ -49,6 +51,14 @@ export default function RootLayout({
             <Adminnavbar />
             <div className="flex lg:container lg:mx-auto pt-10 items-start justify-between">
               <BlogNavbar />
+              {children}
+            </div>
+          </>
+        ) : isAdminPathEvent ? (
+          <>
+            <Adminnavbar />
+            <div className="flex lg:container lg:mx-auto pt-10 items-start justify-between">
+              <EventNavbar />
               {children}
             </div>
           </>

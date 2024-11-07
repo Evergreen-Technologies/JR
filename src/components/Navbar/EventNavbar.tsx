@@ -1,10 +1,10 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-const BlogNavbar = () => {
+const EventNavbar = () => {
   const links = [
-    { label: "New Post", href: "/admin/blog" },
-    { label: "Blog Posts", href: "/admin/blog/posts" },
+    { label: "New Event", href: "/admin/event" },
+    { label: "Event History", href: "/admin/event/events" },
   ];
   const current_path3 = usePathname();
 
@@ -31,4 +31,4 @@ const BlogNavbar = () => {
   );
 };
 
-export default BlogNavbar;
+export default EventNavbar;

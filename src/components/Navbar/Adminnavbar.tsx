@@ -9,7 +9,7 @@ const Adminnavbar = () => {
     { label: "Home", href: "/admin" },
     { label: "Manage Content", href: "/admin/upload_content" },
     { label: "Manage Blog", href: "/admin/blog" },
-    { label: "Manage Events", href: "/admin/events" },
+    { label: "Manage Event", href: "/admin/event" },
   ];
 
   let text = "/admin/blog";
