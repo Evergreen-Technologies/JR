@@ -90,7 +90,7 @@ const page = () => {
                       <Image src={Edit} alt="Edit post" className="h-7 w-7" />
                     </button>
                   </span>
-                  <span>
+                  {/* <span>
                     <button>
                       <Image
                         src={Suspend}
@@ -98,7 +98,7 @@ const page = () => {
                         className="h-8 w-8"
                       />
                     </button>
-                  </span>
+                  </span> */}
                   <span>
                     <button
                       onClick={() => {

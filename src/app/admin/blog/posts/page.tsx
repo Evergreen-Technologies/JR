@@ -2,13 +2,14 @@
 import React from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow, subSeconds } from "date-fns";
 import Delete from "../../../../../public/delete.svg";
 import Edit from "../../../../../public/edit.svg";
 import Suspend from "../../../../../public/suspend.svg";
 import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import EmptyList from "@/../public/better.gif";
+import ReallySuspened from "@/../public/suspended.svg";
 
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -19,18 +20,27 @@ const page = () => {
   interface post {
     title: string;
     post: string;
+    suspended: boolean;
     date: Date;
   }
+
+  const [suspend, setSuspend] = useState([]);
   const [posts, setposts] = useState([]);
   const [checkEmpty, setCheckEmpty] = useState(false);
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
       let data = await response.json();
-      console.log(data);
-      data.reverse();
-      setposts((prevPost) => data);
-      posts.length == 0 ? setCheckEmpty(true) : null;
+
+      // Format dates here
+      const formattedData = data.map((post) => ({
+        ...post,
+        formattedDate: formatDistanceToNow(new Date(post.date)),
+      }));
+
+      formattedData.reverse();
+      setposts(formattedData);
+      posts.length === 0 ? setCheckEmpty(true) : null;
     } catch (err) {
       console.log("Error Fetching content:", err);
     }
@@ -57,8 +67,6 @@ const page = () => {
       console.error("Error deleting post:", error);
     }
   };
-
-  //
 
   const [progress, setProgress] = React.useState(13);
 
@@ -133,15 +141,25 @@ const page = () => {
                         <Image src={Edit} alt="Edit post" className="h-5 w-5" />
                       </button>
                     </span>
-                    <span>
-                      <button>
+                    {/* <span>
+                      <button
+                        onClick={() => {
+                          setposts((prevPosts: any) =>
+                            prevPosts.map((p) =>
+                              p._id === post._id
+                                ? { ...p, suspended: !p.suspended }
+                                : p
+                            )
+                          );
+                        }}
+                      >
                         <Image
-                          src={Suspend}
+                          src={!post?.suspended ? Suspend : ReallySuspened}
                           alt="Suspend post"
                           className="h-6 w-6"
                         />
                       </button>
-                    </span>
+                    </span> */}
                     <span>
                       <button
                         onClick={() => {

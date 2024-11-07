@@ -9,12 +9,14 @@ const page = () => {
   interface post {
     title: string;
     post: string;
+    suspended: boolean;
     date: Date;
   }
 
   const [post, setPost] = useState<post>({
     title: "",
     post: "",
+    suspended: false,
     date: new Date(),
   });
 
@@ -26,6 +28,7 @@ const page = () => {
       setPost({
         title: "",
         post: "",
+        suspended: false,
         date: new Date(),
       });
     } catch (err) {
