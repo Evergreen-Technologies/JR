@@ -27,13 +27,14 @@ const page = () => {
   const [suspend, setSuspend] = useState([]);
   const [posts, setposts] = useState([]);
   const [checkEmpty, setCheckEmpty] = useState(false);
+
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
       let data = await response.json();
 
       // Format dates here
-      const formattedData = data.map((post) => ({
+      const formattedData = data.map((post: post) => ({
         ...post,
         formattedDate: formatDistanceToNow(new Date(post.date)),
       }));
@@ -105,43 +106,52 @@ const page = () => {
             </div>
           )}
         </div>
-        {posts.map((post: any, index: number) => (
-          <div className="w-full  shadow-lg rounded-[20px] p-10">
-            <Link key={index} className="" href={`/admin/blog/${post._id}`}>
-              <p
-                className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
-            "
+        {posts.map((post: any, index: number) => {
+          return (
+            <div className="w-full  shadow-lg rounded-[20px] p-10">
+              <Link
+                key={index}
+                className=""
+                href={`/admin/blog/${post._id}/post`}
               >
+                <p
+                  className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
+            "
+                >
+                  <div
+                    // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        post.post.length > 200
+                          ? `${post.title.slice(0, 200)} ....`
+                          : post.title,
+                    }}
+                  />
+                </p>
                 <div
-                  // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+                  className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
                   dangerouslySetInnerHTML={{
                     __html:
-                      post.post.length > 100
-                        ? `${post.title.slice(0, 100)} ....`
-                        : post.title,
+                      post.post.length > 200
+                        ? `${post.post.slice(0, 200)} ....`
+                        : post.post,
                   }}
                 />
-              </p>
-              <div
-                className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
-                dangerouslySetInnerHTML={{
-                  __html:
-                    post.post.length > 200
-                      ? `${post.post.slice(0, 200)} ....`
-                      : post.post,
-                }}
-              />
-            </Link>
-            <div className="flex justify-end pt-5">
-              <div className="w-1/3 flex justify-start gap-x-3">
-                {current_path.includes("admin") && (
-                  <div className="flex gap-x-2 items-center">
-                    <span>
-                      <button>
-                        <Image src={Edit} alt="Edit post" className="h-5 w-5" />
-                      </button>
-                    </span>
-                    {/* <span>
+              </Link>
+              <div className="flex justify-end pt-5">
+                <div className="w-1/3 flex justify-start gap-x-3">
+                  {current_path.includes("admin") && (
+                    <div className="flex gap-x-2 items-center relative">
+                      <span className="relative -top-1">
+                        <Link href={`/admin/blog/${post._id}/edit`}>
+                          <Image
+                            src={Edit}
+                            alt="Edit post"
+                            className="h-5 w-5"
+                          />
+                        </Link>
+                      </span>
+                      {/* <span>
                       <button
                         onClick={() => {
                           setposts((prevPosts: any) =>
@@ -160,32 +170,33 @@ const page = () => {
                         />
                       </button>
                     </span> */}
-                    <span>
-                      <button
-                        onClick={() => {
-                          deletePost(post._id);
-                        }}
-                      >
-                        <Image
-                          src={Delete}
-                          alt="Delete post"
-                          className="h-6 w-6"
-                        />
-                      </button>
+                      <span>
+                        <button
+                          onClick={() => {
+                            deletePost(post._id);
+                          }}
+                        >
+                          <Image
+                            src={Delete}
+                            alt="Delete post"
+                            className="h-6 w-6"
+                          />
+                        </button>
+                      </span>
+                    </div>
+                  )}
+                  <div>
+                    <span className="text-[14px] text-gray-500">
+                      {isNaN(new Date(post.date).getTime())
+                        ? "Invalid date"
+                        : formatDistanceToNow(new Date(post.date))}
                     </span>
                   </div>
-                )}
-                <div>
-                  <span className="text-[14px] text-gray-500">
-                    {isNaN(new Date(post.date).getTime())
-                      ? "Invalid date"
-                      : formatDistanceToNow(new Date(post.date))}
-                  </span>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </ul>
     </div>
   );

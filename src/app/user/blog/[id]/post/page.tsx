@@ -3,11 +3,14 @@ import { useParams, usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Progress } from "@/components/ui/progress";
-import Delete from "../../../../../public/delete.svg";
-import Edit from "../../../../../public/edit.svg";
-import Suspend from "../../../../../public/suspend.svg";
+import Delete from "@/../public/delete.svg";
+import Edit from "@/../public/edit.svg";
+import Suspend from "@/../public/suspend.svg";
+import ReallySuspended from "@/../public/truesuspend.svg";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import Link from "next/link";
+import { toast } from "react-toastify";
 
 const page = () => {
   const current_path = usePathname();
@@ -15,16 +18,19 @@ const page = () => {
   interface post {
     title: string;
     post: string;
+    suspended: boolean;
     date: Date;
   }
   const [post, setpost] = useState<post>({
     title: "",
     post: "",
+    suspended: false,
     date: new Date(),
   });
 
   const { id } = useParams();
 
+  const [checkEmpty, setCheckEmpty] = useState(false);
   const fetchPost = async () => {
     try {
       console.log(id);
@@ -56,9 +62,10 @@ const page = () => {
       setpost({
         title: "",
         post: "",
+        suspended: false,
         date: new Date(),
       });
-      window.location.href = "/admin/blog/posts";
+      window.location.href = `/admin/blog/{post}`;
       //   console.log("Post deleted successfully:", await response.json());
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -73,7 +80,7 @@ const page = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-[74%]  flex items-start justify-center shadow-2xl min-h-[40vh] rounded-[30px] pt-10">
+    <div className="w-[74%]  flex items-start justify-center shadow-2xl min-h-[40vh] rounded-[30px] pt-10 lg:container lg:mx-auto">
       {!post.title && (
         <div className="w-[90%]">
           <Progress value={progress} className="w-full " />
@@ -83,22 +90,33 @@ const page = () => {
         <div className="w-full  shadow-lg rounded-[20px] p-10">
           <div className="flex justify-end pt-5">
             <div className="w-1/3 flex justify-end gap-x-3">
-              {current_path.includes("admin") && (
+              {/* {current_path.includes("admin") && (
                 <div className="flex gap-x-10 items-center justify-end w-full mb-10">
-                  <span>
-                    <button>
-                      <Image src={Edit} alt="Edit post" className="h-7 w-7" />
-                    </button>
+                  <span className="relative -top-1">
+                    <Link href={`/admin/blog/${post._id}/edit`}>
+                      <Image src={Edit} alt="Edit post" className="h-5 w-5" />
+                    </Link>
                   </span>
-                  {/* <span>
-                    <button>
+                  <span>
+                    <button
+                      onClick={() => {
+                        setpost((prev: post) => {
+                          const updatedPost = {
+                            ...prev,
+                            suspended: !prev.suspended,
+                          };
+                          handleEdit(updatedPost);
+                          return updatedPost;
+                        });
+                      }}
+                    >
                       <Image
-                        src={Suspend}
+                        src={post.suspended ? ReallySuspended : Suspend}
                         alt="Suspend post"
                         className="h-8 w-8"
                       />
                     </button>
-                  </span> */}
+                  </span>
                   <span>
                     <button
                       onClick={() => {
@@ -113,7 +131,7 @@ const page = () => {
                     </button>
                   </span>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
           <p
@@ -121,7 +139,6 @@ const page = () => {
             "
           >
             <div
-              // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
               dangerouslySetInnerHTML={{
                 __html: post.title,
               }}

@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar/Navbar";
 import Adminnavbar from "@/components/Navbar/Adminnavbar";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { usePathname } from "next/navigation";
 import BlogNavbar from "@/components/Navbar/BlogNavbar";
@@ -57,7 +59,7 @@ export default function RootLayout({
           </>
         )}
 
-        {/* {children} */}
+        <ToastContainer position="top-center" theme="dark" />
       </body>
     </html>
   );

@@ -29,8 +29,9 @@ export async function POST(request) {
 
 export async function PUT(request) {
   await connectDB();
-  const { id, ...updateData } = await request.json();
-  const Blog = await Blogs.findByIdAndUpdate(id, updateData, {
+
+  const { _id, ...updateData } = await request.json();
+  const Blog = await Blogs.findByIdAndUpdate(_id, updateData, {
     new: true,
   });
   return NextResponse.json(Blog);

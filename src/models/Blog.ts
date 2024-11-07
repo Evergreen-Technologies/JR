@@ -11,7 +11,7 @@ const formSchema = new mongoose.Schema({
   },
   suspended: {
     type: Boolean,
-    require: false,
+    require: true,
   },
   date: {
     type: Date,
