@@ -1,6 +1,6 @@
 "use client";
 import { useParams, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, cache } from "react";
 import axios from "axios";
 import { Progress } from "@/components/ui/progress";
 import Delete from "@/../public/delete.svg";
@@ -10,7 +10,6 @@ import ReallySuspended from "@/../public/truesuspend.svg";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import Link from "next/link";
-import { toast } from "react-toastify";
 
 const page = () => {
   const current_path = usePathname();
@@ -44,7 +43,7 @@ const page = () => {
     }
   };
 
-  const handleEdit = async (updatedPost: post) => {
+  const handleEdit = cache(async (updatedPost: post) => {
     try {
       const response = await axios.put(`/api/Blog`, updatedPost);
       console.log("submitted SuccesFully:", response.data);
@@ -55,7 +54,7 @@ const page = () => {
         console.error("Unexpected error:", err);
       }
     }
-  };
+  });
 
   const deletePost = async () => {
     try {

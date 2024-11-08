@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { cache } from "react";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { formatDistanceToNow, subSeconds } from "date-fns";

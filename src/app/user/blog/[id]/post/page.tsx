@@ -1,6 +1,6 @@
 "use client";
 import { useParams, usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, cache } from "react";
 import axios from "axios";
 import { Progress } from "@/components/ui/progress";
 import Delete from "@/../public/delete.svg";
@@ -31,6 +31,7 @@ const page = () => {
   const { id } = useParams();
 
   const [checkEmpty, setCheckEmpty] = useState(false);
+
   const fetchPost = async () => {
     try {
       console.log(id);
