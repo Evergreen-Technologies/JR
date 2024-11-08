@@ -46,8 +46,8 @@ const page = () => {
     fetchPosts();
   }, []);
   return (
-    <div className=" rounded-[30px] flex justify-center items-start pt-10 min-h-[40vh] shadow-2xl lg:container lg:mx-auto mt-10">
-      <ul className="w-[90%] flex flex-col item-center justify-center h-full">
+    <div className=" rounded-[30px] flex justify-center items-start py-14 min-h-[40vh] shadow-2xl lg:container lg:mx-auto mt-10">
+      <ul className="w-[90%] flex flex-col item-center justify-center h-full gap-y-3">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full flex-col gap-y-20">
             <Progress value={progress} className="w-[30%] " />
@@ -70,24 +70,22 @@ const page = () => {
               href={`/user/blog/${post._id}/post`}
             >
               <p
-                className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
+                className="bg-gray-200 py-2  rounded-[30px] pl-4 text-[18px]
             "
               >
                 <div
-                  // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
                   dangerouslySetInnerHTML={{
-                    __html: post.post,
+                    __html: post.title,
                   }}
                 />
               </p>
-              <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-full flex items-center text-[16px] py-3">
+              <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
                 <div
-                  // className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
                   dangerouslySetInnerHTML={{
                     __html:
-                      post.post.length > 100
-                        ? `${post.title.slice(0, 100)} ....`
-                        : post.title,
+                      post.post.length > 250
+                        ? `${post.post.slice(0, 250)} ....`
+                        : post.post,
                   }}
                 />
               </p>

@@ -146,11 +146,9 @@ const page = () => {
               )}
             </div>
           </div>
-          <p
-            className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
-            "
-          >
+          <p>
             <div
+              className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]"
               dangerouslySetInnerHTML={{
                 __html: post.title,
               }}

@@ -64,7 +64,7 @@ const page = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-3 w-[80%]"
+        className="flex flex-col items-center justify-center gap-y-5 w-[80%]"
       >
         <div className="flex flex-col w-full gap-y-2 items-center">
           <label htmlFor="">Event name</label>
