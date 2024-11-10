@@ -86,7 +86,7 @@ export default function Home() {
             </label>
             <input
               type="text"
-              className="border border-solid border-gray-300  h-12 rounded-[8px] outline-none pl-5 text-black"
+              className="border border-solid border-gray-300  h-12 rounded-[8px] outline-none pl-5 bg-white text-black"
               value={form.title}
               onChange={(e) =>
                 setForm((prevForm) => ({ ...prevForm, title: e.target.value }))

@@ -69,15 +69,14 @@ const page = () => {
       if (!response.ok) {
         throw new Error(`Error: ${response.statusText}`);
       }
-      //   const updatedPosts = post.filter((post: any) => post._id !== id);
+
       setpost({
         title: "",
         post: "",
         suspended: false,
         date: new Date(),
       });
-      window.location.href = `/admin/blog/{post}`;
-      //   console.log("Post deleted successfully:", await response.json());
+      window.location.href = `/admin/blog/posts`;
     } catch (error) {
       console.error("Error deleting post:", error);
     }
