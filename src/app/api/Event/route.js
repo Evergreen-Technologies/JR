@@ -1,18 +1,18 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/config/database";
-import Blogs from "@/models/Blog";
+import Events from "@/models/Event";
 
 export async function GET(request) {
   await connectDB();
-  const Blog = await Blogs.find({});
-  return NextResponse.json(Blog);
+  const Event = await Events.find({});
+  return NextResponse.json(Event);
 }
 
 export async function GETById(request, { params }) {
   await connectDB();
 
   const { id } = params;
-  const video = await Blogs.findById(id);
+  const video = await Events.findById(id);
 
   if (!video) {
     return new Response("Video not found", { status: 404 });
@@ -22,24 +22,24 @@ export async function GETById(request, { params }) {
 }
 export async function POST(request) {
   await connectDB();
-  const BlogData = await request.json();
-  const Blog = await Blogs.create(BlogData);
-  return NextResponse.json(Blog);
+  const EventData = await request.json();
+  const Event = await Events.create(EventData);
+  return NextResponse.json(Event);
 }
 
 export async function PUT(request) {
   await connectDB();
 
   const { _id, ...updateData } = await request.json();
-  const Blog = await Blogs.findByIdAndUpdate(_id, updateData, {
+  const Event = await Events.findByIdAndUpdate(_id, updateData, {
     new: true,
   });
-  return NextResponse.json(Blog);
+  return NextResponse.json(Event);
 }
 
 export async function DELETE(request) {
   await connectDB();
   const { id } = await request.json();
-  await Blogs.findByIdAndDelete(id);
+  await Events.findByIdAndDelete(id);
   return NextResponse.json({ message: "User deleted successfully" });
 }

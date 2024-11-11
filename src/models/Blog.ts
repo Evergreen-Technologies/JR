@@ -9,6 +9,10 @@ const formSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  suspended: {
+    type: Boolean,
+    require: true,
+  },
   date: {
     type: Date,
     required: true,

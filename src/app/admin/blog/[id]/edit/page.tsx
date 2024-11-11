@@ -1,9 +1,12 @@
 "use client";
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Editor } from "primereact/editor";
+import { useParams } from "next/navigation";
+import { toast } from "react-toastify";
+import { usePathname } from "next/navigation";
 
 const page = () => {
   interface post {
@@ -13,18 +16,43 @@ const page = () => {
     date: Date;
   }
 
-  const [post, setPost] = useState<post>({
+  const [post, setPost] = useState<any>({
     title: "",
     post: "",
     suspended: false,
     date: new Date(),
   });
 
-  const handleSubmit = async () => {
+  const { id } = useParams();
+  const fetchPost = async () => {
+    try {
+      console.log(id);
+      const response = await fetch("/api/Blog");
+      const data = await response.json();
+      const selectById = data.find((post: any) => post._id == id);
+      console.log(data);
+      console.log(selectById);
+      setPost(selectById);
+    } catch (err) {
+      console.log("Error Fetching content:", err);
+    }
+  };
+  const current_path = usePathname();
+
+  const handleEdit = async () => {
     console.log(post);
     try {
-      const response = await axios.post("/api/Blog", post);
+      const response = await axios.put(`/api/Blog`, post);
       console.log("submitted SuccesFully:", response.data);
+
+      if (response.data) {
+        toast.success("Succesfully Edited!");
+        setTimeout(() => {
+          window.location.href = "/admin/blog/posts";
+        }, 1500);
+      } else {
+        toast.error("Something went wrong, please try again!");
+      }
       setPost({
         title: "",
         post: "",
@@ -40,10 +68,6 @@ const page = () => {
     }
   };
 
-  //   useEffect(() => {
-  //     fetchPosts();
-  //   }, []);
-
   const [progrees, setProgress] = useState(false);
   const buttonEffect = () => {
     if (post.title && post.post) {
@@ -54,6 +78,9 @@ const page = () => {
     }
   };
 
+  useEffect(() => {
+    fetchPost();
+  }, []);
   return (
     <div
       className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
@@ -77,13 +104,6 @@ const page = () => {
             style={{ height: "60px", fontSize: "17px" }}
             className="  rounded-md  pt-3 outline-none"
           />
-          {/* <input
-            type="text"
-            value={post.title}
-            onChange={(e) => setPost({ ...post, title: e.target.value })}
-            className="border border-gray-300 h-12 rounded-md pl-3 outline-none"
-            required
-          /> */}
         </div>
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="">Post</label>
@@ -95,22 +115,16 @@ const page = () => {
             style={{ height: "320px", fontSize: "17px" }}
             className="  rounded-md  pt-3 outline-none"
           />
-          {/* <textarea
-            value={post.post}
-            onChange={(e) => setPost({ ...post, post: e.target.value })}
-            className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
-            required
-          /> */}
         </div>
         <div className="flex justify-end w-full">
           <button
             className={`bg-red-700 text-white font-bold px-10 py-2 rounded-[4px] outline-none`}
             onClick={() => {
-              handleSubmit();
+              handleEdit();
               buttonEffect();
             }}
           >
-            {!progrees && <>Post</>}
+            {!progrees && <>Edit Post</>}
             {progrees && (
               <CircularProgress
                 style={{

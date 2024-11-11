@@ -1,21 +1,24 @@
 import mongoose from "mongoose";
 
 const formSchema = new mongoose.Schema({
-  title: {
+  name: {
     type: String,
     required: true,
   },
-  imageUrl: {
+  details: {
     type: String,
     required: true,
   },
-  videoUrl: {
+  location: {
     type: String,
+    require: true,
+  },
+  date: {
+    type: mongoose.Schema.Types.Mixed,
     required: true,
   },
 });
 
-const Material =
-  mongoose.models.Materials || mongoose.model("Materials", formSchema);
+const Event = mongoose.models.Event || mongoose.model("Event", formSchema);
 
-export default Material;
+export default Event;
