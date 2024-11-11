@@ -151,25 +151,6 @@ const page = () => {
                           />
                         </Link>
                       </span>
-                      {/* <span>
-                      <button
-                        onClick={() => {
-                          setposts((prevPosts: any) =>
-                            prevPosts.map((p) =>
-                              p._id === post._id
-                                ? { ...p, suspended: !p.suspended }
-                                : p
-                            )
-                          );
-                        }}
-                      >
-                        <Image
-                          src={!post?.suspended ? Suspend : ReallySuspened}
-                          alt="Suspend post"
-                          className="h-6 w-6"
-                        />
-                      </button>
-                    </span> */}
                       <span>
                         <button
                           onClick={() => {

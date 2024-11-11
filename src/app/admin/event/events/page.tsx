@@ -24,6 +24,7 @@ import Link from "next/link";
 
 const page = () => {
   interface post {
+    _id: string;
     name: string;
     details: string;
 
@@ -51,6 +52,28 @@ const page = () => {
       data.length == 0 ? setCheckEmpty(true) : null;
     } catch (err) {
       console.error("Error Fetching content:", err);
+    }
+  };
+
+  const deletePost = async (id: any) => {
+    try {
+      // Ensure the ID is sent correctly in the request body
+      const response = await fetch(`/api/Event`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json", // Set the content type
+        },
+        body: JSON.stringify({ id }), // Send the id in the body
+      });
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+      const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
+
+      setPosts(updatedPosts.reverse());
+      console.log("Event deleted successfully:", await response.json());
+    } catch (error) {
+      console.error("Error deleting post:", error);
     }
   };
 
@@ -132,9 +155,9 @@ const page = () => {
             seconds: 0,
           };
           return (
-            <BackgroundGradient
+            <div
               key={index}
-              className="rounded-[22px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px w-[400px] h-[400px] gap-5  items-center  relative"
+              className="rounded-[22px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px w-[400px] h-[400px] gap-5  items-center  relative shadow-xl"
             >
               <div className="flex w-full justify-end gap-x-3 items-center relative -top-5">
                 <div className="relative top-[3px]">
@@ -143,68 +166,52 @@ const page = () => {
                       <Image src={View} alt="View" className="h-6 w-6" />
                     </DialogTrigger>
                     <DialogContent className=" min-h-[600px] w-[750px] text-black font-bold">
-                      <BackgroundGradient
+                      <div
                         key={index}
-                        className="  p-2 sm:p-10  dark:bg-slate-400 flex flex-col   gap-10  items-center  h-full"
+                        className="  p-2 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
                       >
-                        <div className="flex w-full justify-end gap-x-3 items-center relative -top-5">
-                          <div className="relative top-[3px]"></div>
-                          <div>
+                        <div className="flex w-full justify-end gap-x-3 items-center relative -top-3">
+                          <div className="relative -top-[2px]">
                             <Image src={Edit} alt="View" className="h-6 w-6" />
                           </div>
                           <div>
-                            <Dialog>
-                              <DialogTrigger asChild>
-                                <Image
-                                  src={Delete}
-                                  alt="View"
-                                  className="h-6 w-6"
-                                />
-                              </DialogTrigger>
-                              <DialogContent>
-                                <div className="flex flex-col w-[450px] h-[200px] rounded-[10px] items-center justify-center gap-y-5">
-                                  <div>
-                                    Are you sure you want to delete this Event?
-                                  </div>
-                                  <div className="flex items-center justify-end w-full pr-10 gap-x-3">
-                                    <button>Cancel</button>
-                                    <button className="text-white bg-red-600 font-bold border border-slate-500 px-4 py-2 rounded-md">
-                                      Delete
-                                    </button>
-                                  </div>
-                                </div>
-                              </DialogContent>
-                            </Dialog>
+                            <button>
+                              <Image
+                                src={Delete}
+                                alt="View"
+                                className="h-6 w-6"
+                              />
+                            </button>
                           </div>
                         </div>
-                        <BackgroundGradient className="rounded-[22px] w-[600px]  dark:bg-zinc-900">
+                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
                             className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.name,
                             }}
                           />
-                        </BackgroundGradient>
-                        <BackgroundGradient className="rounded-[22px] w-[600px]  dark:bg-zinc-900">
+                        </div>
+                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
                             className=" px-3 py-1  w-full text-start text-black font-bold text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.details,
                             }}
                           />
-                        </BackgroundGradient>
-                        <BackgroundGradient className="rounded-[22px] w-[600px]  dark:bg-zinc-900">
+                        </div>
+                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
                             className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.location,
                             }}
                           />
-                        </BackgroundGradient>
-                        <BackgroundGradient className="rounded-[22px] w-[600px]  dark:bg-zinc-900">
+                        </div>
+                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]">
                             <div className="flex items-center justify-center">
-                              <span className="w-1/2 border-r pr-3">
+                              <span className="w-1/2 border-r pr-3 border-r-black">
                                 {dayjs(post.date).format("MMM DD, YYYY")}
                               </span>
                               <span className="w-1/2">
@@ -212,7 +219,7 @@ const page = () => {
                               </span>
                             </div>
                           </div>
-                        </BackgroundGradient>
+                        </div>
 
                         <div className="grid grid-flow-col gap-5 text-center auto-cols-max ">
                           <div className="flex flex-col">
@@ -248,7 +255,7 @@ const page = () => {
                             sec
                           </div>
                         </div>
-                      </BackgroundGradient>
+                      </div>
                     </DialogContent>
                   </Dialog>
                 </div>
@@ -268,19 +275,28 @@ const page = () => {
                           Are you sure you want to delete this Event?
                         </div>
                         <div className="flex items-center justify-end w-full pr-10 gap-x-3">
-                          <button>Cancel</button>
-                          <button className="text-white bg-red-600 font-bold  px-4 py-2 rounded-md">
-                            Delete
-                          </button>
+                          <DialogTrigger asChild>
+                            <button>Cancel</button>
+                          </DialogTrigger>
+                          <DialogTrigger>
+                            <button
+                              className="text-white bg-red-600 font-bold  px-4 py-2 rounded-md"
+                              onClick={() => {
+                                deletePost(post._id);
+                              }}
+                            >
+                              Delete
+                            </button>
+                          </DialogTrigger>
                         </div>
                       </div>
                     </DialogContent>
                   </Dialog>
                 </div>
               </div>
-              <BackgroundGradient className="rounded-[22px] w-[300px]  dark:bg-zinc-900">
+              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-white text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.name.length > 30
@@ -288,10 +304,10 @@ const page = () => {
                         : post.name,
                   }}
                 />
-              </BackgroundGradient>
-              <BackgroundGradient className="rounded-[22px] w-[300px]  dark:bg-zinc-900">
+              </div>
+              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-white text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.details.length > 30
@@ -299,10 +315,10 @@ const page = () => {
                         : post.details,
                   }}
                 />
-              </BackgroundGradient>
-              <BackgroundGradient className="rounded-[22px] w-[300px]  dark:bg-zinc-900">
+              </div>
+              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-white text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.location.length > 30
@@ -310,11 +326,11 @@ const page = () => {
                         : post.location,
                   }}
                 />
-              </BackgroundGradient>
-              <BackgroundGradient className="rounded-[22px] w-[300px]  dark:bg-zinc-900">
-                <div className=" px-3 py-1  w-full text-center text-white text-[16px]">
+              </div>
+              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
+                <div className=" px-3 py-1  w-full text-center text-black text-[16px]">
                   <div className="flex items-center justify-center">
-                    <span className="w-1/2 border-r pr-3">
+                    <span className="w-1/2 border-r pr-3 border-r-black">
                       {dayjs(post.date).format("MMM DD, YYYY")}
                     </span>
                     <span className="w-1/2">
@@ -322,7 +338,7 @@ const page = () => {
                     </span>
                   </div>
                 </div>
-              </BackgroundGradient>
+              </div>
 
               <div className="grid grid-flow-col gap-5 text-center auto-cols-max absolute bottom-3">
                 <div className="flex flex-col">
@@ -350,7 +366,7 @@ const page = () => {
                   sec
                 </div>
               </div>
-            </BackgroundGradient>
+            </div>
           );
         })}
       </ul>

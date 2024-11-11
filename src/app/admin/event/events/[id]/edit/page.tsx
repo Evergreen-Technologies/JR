@@ -14,13 +14,15 @@ import { toast } from "react-toastify";
 
 const page = () => {
   interface event {
+    _id: string;
     name: string;
     details: string;
     location: string;
     date: Dayjs;
   }
 
-  const [event, setEvent] = useState({
+  const [event, setEvent] = useState<event>({
+    _id: "",
     name: "",
     details: "",
     location: "",
@@ -38,6 +40,7 @@ const page = () => {
       console.log(selectById);
       if (selectById) {
         setEvent({
+          _id: selectById._id,
           name: selectById.name,
           details: selectById.details,
           location: selectById.location,
@@ -52,7 +55,7 @@ const page = () => {
   const handleEdit = async () => {
     try {
       console.log(event);
-      const response = await axios.put(`/api/Event`, event);
+      const response = await axios.put("/api/Event", event);
       console.log("submitted SuccesFully:", response.data);
 
       if (response.data) {
@@ -64,6 +67,7 @@ const page = () => {
         toast.error("Something went wrong, please try again!");
       }
       setEvent({
+        _id: "",
         name: "",
         details: "",
         location: "",

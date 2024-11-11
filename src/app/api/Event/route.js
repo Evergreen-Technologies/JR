@@ -31,9 +31,18 @@ export async function PUT(request) {
   await connectDB();
 
   const { _id, ...updateData } = await request.json();
+  console.log("Updating Event with ID:", _id);
+  console.log("Update Data:", updateData);
+
   const Event = await Events.findByIdAndUpdate(_id, updateData, {
     new: true,
   });
+
+  if (!Event) {
+    console.error("Event not found for ID:", _id);
+    return NextResponse.json({ message: "Event not found" }, { status: 404 });
+  }
+
   return NextResponse.json(Event);
 }
 
@@ -41,5 +50,5 @@ export async function DELETE(request) {
   await connectDB();
   const { id } = await request.json();
   await Events.findByIdAndDelete(id);
-  return NextResponse.json({ message: "User deleted successfully" });
+  return NextResponse.json({ message: "Event deleted successfully" });
 }

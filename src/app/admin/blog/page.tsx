@@ -95,12 +95,6 @@ const page = () => {
             style={{ height: "320px", fontSize: "17px" }}
             className="  rounded-md  pt-3 outline-none"
           />
-          {/* <textarea
-            value={post.post}
-            onChange={(e) => setPost({ ...post, post: e.target.value })}
-            className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
-            required
-          /> */}
         </div>
         <div className="flex justify-end w-full">
           <button
