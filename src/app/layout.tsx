@@ -49,7 +49,7 @@ export default function RootLayout({
         ) : isAdminPathBlog ? (
           <>
             <Adminnavbar />
-            <div className="flex lg:container lg:mx-auto pt-10 items-start justify-between">
+            <div className="flex lg:container lg:mx-auto pt-10 sm:items-start flex-col sm:flex-row items-center sm:justify-between justify-center">
               <BlogNavbar />
               {children}
             </div>
@@ -57,7 +57,7 @@ export default function RootLayout({
         ) : isAdminPathEvent ? (
           <>
             <Adminnavbar />
-            <div className="flex lg:container lg:mx-auto pt-10 items-start justify-between">
+            <div className="flex lg:container lg:mx-auto pt-10 sm:items-start flex-col sm:flex-row items-center sm:justify-between justify-center">
               <EventNavbar />
               {children}
             </div>

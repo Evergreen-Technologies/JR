@@ -9,8 +9,8 @@ const EventNavbar = () => {
   const current_path3 = usePathname();
 
   return (
-    <nav className="w-[20%]  rounded-[30px] flex items-center justify-start shadow-2xl border-t border-t-gray-200">
-      <ul className="flex flex-col justify-start pt-12 items-center gap-y-10 w-full  h-[40vh] rounded-[20px]">
+    <nav className="sm:w-[20%] w-full  sm:rounded-[30px] rounded-[12px] flex items-center justify-start sm:shadow-2xl sm:border-t sm:border-t-gray-200">
+      <ul className="flex sm:flex-col sm:justify-start justify-center sm:pt-12 -mt-2 items-center sm:gap-y-10 gap-x-7 w-full  sm:h-[40vh] h-[50px] sm:rounded-[20px] rounded-[12px]">
         {links.map((link, index) => (
           <li
             key={index}

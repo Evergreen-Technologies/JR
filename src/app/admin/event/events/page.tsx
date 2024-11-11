@@ -158,7 +158,7 @@ const page = () => {
           return (
             <div
               key={index}
-              className="rounded-[22px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px w-[400px] h-[400px] gap-5  items-center  relative shadow-xl"
+              className="sm:rounded-[22px] rounded-[15px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px sm:w-[400px] w-[290px] h-[400px] gap-5  items-center  relative shadow-xl"
             >
               <div className="flex w-full justify-end gap-x-3 items-center relative -top-5">
                 <div className="relative top-[3px]">
@@ -166,7 +166,7 @@ const page = () => {
                     <DialogTrigger asChild>
                       <Image src={View} alt="View" className="h-6 w-6" />
                     </DialogTrigger>
-                    <DialogContent className=" min-h-[600px] w-[750px] text-black">
+                    <DialogContent className=" sm:h-[600px] sm:w-[750px] w-[290px] h-[400px] text-black">
                       <div
                         key={index}
                         className="  p-2 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
@@ -211,7 +211,7 @@ const page = () => {
                         </div>
                         <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
-                            className=" px-3 py-1  w-full text-center text-black text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black sm:text-[18px] text-[15px] "
                             dangerouslySetInnerHTML={{
                               __html: post.name,
                             }}
@@ -365,7 +365,7 @@ const page = () => {
                 </div>
               </div>
 
-              <div className="grid grid-flow-col gap-5 text-center auto-cols-max absolute bottom-3">
+              <div className="grid grid-flow-col gap-5 text-center auto-cols-max absolute bottom-3 text-[15px]">
                 <div className="flex flex-col">
                   <span className="countdown font-mono text-5xl">
                     <span style={{ "--value": countdown.days }}></span>

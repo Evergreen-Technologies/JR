@@ -56,7 +56,7 @@ const page = () => {
 
   return (
     <div
-      className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
+      className="sm:w-[74%] w-full rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
     "
     >
       <form
@@ -65,7 +65,7 @@ const page = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-3 w-[80%]"
+        className="flex flex-col items-center justify-center gap-y-3 ()w-[80%] "
       >
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="">Title</label>
@@ -92,7 +92,10 @@ const page = () => {
             onTextChange={(e: any) =>
               setPost({ ...post, post: e.htmlValue || "" })
             }
-            style={{ height: "320px", fontSize: "17px" }}
+            style={{
+              height: window.innerWidth < 768 ? "250px" : "320px",
+              fontSize: "17px",
+            }}
             className="  rounded-md  pt-3 outline-none"
           />
         </div>
