@@ -72,6 +72,7 @@ const page = () => {
 
       setPosts(updatedPosts.reverse());
       console.log("Event deleted successfully:", await response.json());
+      fetchPosts();
     } catch (error) {
       console.error("Error deleting post:", error);
     }
@@ -165,7 +166,7 @@ const page = () => {
                     <DialogTrigger asChild>
                       <Image src={View} alt="View" className="h-6 w-6" />
                     </DialogTrigger>
-                    <DialogContent className=" min-h-[600px] w-[750px] text-black font-bold">
+                    <DialogContent className=" min-h-[600px] w-[750px] text-black">
                       <div
                         key={index}
                         className="  p-2 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
@@ -175,18 +176,42 @@ const page = () => {
                             <Image src={Edit} alt="View" className="h-6 w-6" />
                           </div>
                           <div>
-                            <button>
-                              <Image
-                                src={Delete}
-                                alt="View"
-                                className="h-6 w-6"
-                              />
-                            </button>
+                            <Dialog>
+                              <DialogTrigger asChild>
+                                <Image
+                                  src={Delete}
+                                  alt="View"
+                                  className="h-6 w-6"
+                                />
+                              </DialogTrigger>
+                              <DialogContent>
+                                <div className="flex flex-col w-[400px] h-[170px] rounded-[6px] items-center justify-center gap-y-5">
+                                  <div className="text-[17px]">
+                                    Are you sure you want to delete this Event?
+                                  </div>
+                                  <div className="flex items-center justify-end w-full pr-10 gap-x-3">
+                                    <DialogTrigger asChild>
+                                      <button>Cancel</button>
+                                    </DialogTrigger>
+                                    <DialogTrigger>
+                                      <button
+                                        className="text-white bg-red-600   px-4 py-2 rounded-md"
+                                        onClick={() => {
+                                          deletePost(post._id);
+                                        }}
+                                      >
+                                        Delete
+                                      </button>
+                                    </DialogTrigger>
+                                  </div>
+                                </div>
+                              </DialogContent>
+                            </Dialog>
                           </div>
                         </div>
                         <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
-                            className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.name,
                             }}
@@ -194,7 +219,7 @@ const page = () => {
                         </div>
                         <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
-                            className=" px-3 py-1  w-full text-start text-black font-bold text-[18px]"
+                            className=" px-3 py-1  w-full text-start text-black  text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.details,
                             }}
@@ -202,14 +227,14 @@ const page = () => {
                         </div>
                         <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
                           <div
-                            className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black  text-[18px]"
                             dangerouslySetInnerHTML={{
                               __html: post.location,
                             }}
                           />
                         </div>
                         <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
-                          <div className=" px-3 py-1  w-full text-center text-black font-bold text-[18px]">
+                          <div className=" px-3 py-1  w-full text-center text-black text-[18px]">
                             <div className="flex items-center justify-center">
                               <span className="w-1/2 border-r pr-3 border-r-black">
                                 {dayjs(post.date).format("MMM DD, YYYY")}

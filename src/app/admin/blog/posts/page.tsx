@@ -62,7 +62,7 @@ const page = () => {
       }
       const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
 
-      setposts(updatedPosts.reverse());
+      setposts(updatedPosts);
       console.log("Post deleted successfully:", await response.json());
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -151,6 +151,25 @@ const page = () => {
                           />
                         </Link>
                       </span>
+                      {/* <span>
+                      <button
+                        onClick={() => {
+                          setposts((prevPosts: any) =>
+                            prevPosts.map((p) =>
+                              p._id === post._id
+                                ? { ...p, suspended: !p.suspended }
+                                : p
+                            )
+                          );
+                        }}
+                      >
+                        <Image
+                          src={!post?.suspended ? Suspend : ReallySuspened}
+                          alt="Suspend post"
+                          className="h-6 w-6"
+                        />
+                      </button>
+                    </span> */}
                       <span>
                         <button
                           onClick={() => {

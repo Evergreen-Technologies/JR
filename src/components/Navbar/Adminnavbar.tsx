@@ -10,6 +10,7 @@ const Adminnavbar = () => {
     { label: "Manage Content", href: "/admin/upload_content" },
     { label: "Manage Blog", href: "/admin/blog" },
     { label: "Manage Event", href: "/admin/event" },
+    { label: "Sign Out", href: "/api/auth/signout" },
   ];
 
   let text = "/admin/blog";
