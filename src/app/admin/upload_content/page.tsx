@@ -34,6 +34,8 @@ export default function Home() {
     videoUrl: "",
   });
 
+  const [previewControl, setPreviewControl] = useState(false);
+
   const [display, setDisplay] = useState(false);
   const [submitted, setSubmitted] = useState<form>({
     title: "",

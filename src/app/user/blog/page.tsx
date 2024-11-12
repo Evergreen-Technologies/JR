@@ -70,7 +70,7 @@ const page = () => {
               href={`/user/blog/${post._id}/post`}
             >
               <p
-                className="bg-gray-200 py-2  rounded-[30px] pl-4 text-[18px]
+                className="bg-gray-200 py-2  rounded-[20px] pl-4 sm:text-[18px] text-[16px]
             "
               >
                 <div
@@ -79,7 +79,7 @@ const page = () => {
                   }}
                 />
               </p>
-              <p className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3">
+              <p className="px-4 mt-4 bg-gray-100 min-h-10 rounded-[20px] flex items-center text-[16px] py-3">
                 <div
                   dangerouslySetInnerHTML={{
                     __html:

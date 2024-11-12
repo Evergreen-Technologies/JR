@@ -98,9 +98,9 @@ const page = () => {
   }, [posts, countdowns]);
 
   return (
-    <div className="w-[74%] min-h-[40vh] rounded-[30px] shadow-2xl flex items-center justify-center py-5 lg:container lg:mx-auto">
+    <div className="sm:w-[74%] w-[90%] min-h-[40vh] rounded-[30px] shadow-2xl flex items-start justify-center py-5 lg:container lg:mx-auto mx-[20px]">
       {!posts[0] && !checkEmpty && (
-        <div className="flex items-center justify-center w-[80%]">
+        <div className="flex items-start justify-center w-[80%] pt-12">
           <Progress value={progress} className="w-[30%]" />
         </div>
       )}
@@ -134,45 +134,45 @@ const page = () => {
           return (
             <div
               key={index}
-              className="rounded-[22px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px w-[400px] h-[400px] gap-5  items-center  relative shadow-xl"
+              className=" sm:rounded-[22px] rounded-[15px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px sm:w-[400px] w-[290px] sm:h-[400px] h-[370px] gap-5  items-center  relative shadow-xl"
             >
-              <div className="flex w-full justify-end gap-x-3 items-center relative -top-5">
-                <div className="relative top-[3px]">
+              <div className="flex w-full justify-end gap-x-3 items-center relative top-3">
+                <div className="relative">
                   <Dialog>
                     <DialogTrigger asChild>
                       <Image src={View} alt="View" className="h-6 w-6" />
                     </DialogTrigger>
-                    <DialogContent className=" min-h-[600px] w-[750px] text-black ">
+                    <DialogContent className=" sm:h-[600px] sm:w-[750px] w-[240px] h-[650px] text-black">
                       <div
                         key={index}
-                        className="  p-2 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
+                        className="  p-1 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
                       >
-                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
+                        <div className=" sm:w-[600px] w-[350px]  dark:bg-zinc-900  border-b border-b-slate-700 sm:pb-3 pb-1 text-[12px] sm:text-[17px]">
                           <div
-                            className=" px-3 py-1  w-full text-center text-black  text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black sm:text-[18px] text-[14px] "
                             dangerouslySetInnerHTML={{
                               __html: post.name,
                             }}
                           />
                         </div>
-                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
+                        <div className=" sm:w-[600px] w-[350px]  dark:bg-zinc-900  border-b border-b-slate-700 sm:pb-3 pb-1 text-[12px] sm:text-[17px]">
                           <div
-                            className=" px-3 py-1  w-full text-start text-black  text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black  sm:text-[18px] text-[14px]"
                             dangerouslySetInnerHTML={{
                               __html: post.details,
                             }}
                           />
                         </div>
-                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
+                        <div className=" sm:w-[600px] w-[350px]  dark:bg-zinc-900  border-b border-b-slate-700 sm:pb-3 pb-1 text-[12px] sm:text-[17px]">
                           <div
-                            className=" px-3 py-1  w-full text-center text-black  text-[18px]"
+                            className=" px-3 py-1  w-full text-center text-black  sm:text-[18px] text-[14px]"
                             dangerouslySetInnerHTML={{
                               __html: post.location,
                             }}
                           />
                         </div>
-                        <div className=" w-[600px]  dark:bg-zinc-900  border-b border-b-slate-700 pb-3">
-                          <div className=" px-3 py-1  w-full text-center text-black  text-[18px]">
+                        <div className=" sm:w-[600px] w-[350px]  dark:bg-zinc-900  border-b border-b-slate-700 sm:pb-3 pb-1 text-[12px] sm:text-[17px]">
+                          <div className=" px-3 py-1  w-full text-center text-black sm:text-[18px] text-[14px]">
                             <div className="flex items-center justify-center">
                               <span className="w-1/2 border-r pr-3 border-r-black">
                                 {dayjs(post.date).format("MMM DD, YYYY")}
@@ -223,9 +223,9 @@ const page = () => {
                   </Dialog>
                 </div>
               </div>
-              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
+              <div className=" sm:w-[300px] w-[250px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black sm:text-[16px] text-[14px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.name.length > 30
@@ -234,9 +234,9 @@ const page = () => {
                   }}
                 />
               </div>
-              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
+              <div className=" sm:w-[300px] w-[250px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black sm:text-[16px] text-[14px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.details.length > 30
@@ -245,9 +245,9 @@ const page = () => {
                   }}
                 />
               </div>
-              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
+              <div className=" sm:w-[300px] w-[250px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
                 <div
-                  className=" px-3 py-1  w-full text-center text-black text-[16px]"
+                  className=" px-3 py-1  w-full text-center text-black sm:text-[16px] text-[14px]"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.location.length > 30
@@ -256,8 +256,8 @@ const page = () => {
                   }}
                 />
               </div>
-              <div className=" w-[300px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
-                <div className=" px-3 py-1  w-full text-center text-black text-[16px]">
+              <div className=" sm:w-[300px] w-[250px]  dark:bg-zinc-900 border-b border-b-slate-600 pb-2">
+                <div className=" px-3 py-1  w-full text-center text-black sm:text-[16px] text-[14px]">
                   <div className="flex items-center justify-center">
                     <span className="w-1/2 border-r pr-3 border-r-black">
                       {dayjs(post.date).format("MMM DD, YYYY")}
@@ -269,27 +269,27 @@ const page = () => {
                 </div>
               </div>
 
-              <div className="grid grid-flow-col gap-5 text-center auto-cols-max absolute bottom-3">
+              <div className="grid grid-flow-col gap-5 text-center auto-cols-max absolute bottom-3 sm:text-[15px] text-[13px]">
                 <div className="flex flex-col">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.days }}></span>
                   </span>
                   days
                 </div>
                 <div className="flex flex-col">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.hours }}></span>
                   </span>
                   hours
                 </div>
                 <div className="flex flex-col">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.minutes }}></span>
                   </span>
                   min
                 </div>
                 <div className="flex flex-col">
-                  <span className="countdown font-mono text-5xl">
+                  <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.seconds }}></span>
                   </span>
                   sec
