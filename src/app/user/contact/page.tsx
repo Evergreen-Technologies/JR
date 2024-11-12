@@ -38,7 +38,7 @@ const Connect: React.FC = () => {
       "
       id="contact"
     >
-      <div className="sm:w-1/2 w-[90%] text-[14px] sm:text-[18px] rounded-[18px] shadow-2xl">
+      <div className="sm:w-1/2 w-[90%] text-[14px] sm:text-[18px] rounded-[18px] shadow-2xl p-6">
         <form
           ref={form}
           onSubmit={sendEmail}
