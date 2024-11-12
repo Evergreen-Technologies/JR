@@ -18,9 +18,9 @@ const Adminnavbar = () => {
   const current_path2 = usePathname();
   console.log(current_path2);
   const links = [
-    { label: "Home", href: "/admin" },
-    { label: "Manage Content", href: "/admin/upload_content" },
+    // { label: "Home", href: "/admin" },
     { label: "Manage Blog", href: "/admin/blog" },
+    { label: "Manage Content", href: "/admin/upload_content" },
     { label: "Manage Event", href: "/admin/event" },
     { label: "Sign Out", href: "/api/auth/signout" },
   ];
@@ -65,7 +65,7 @@ const Adminnavbar = () => {
                   " border-b-black border-b-[2px] transition-all ease-in-out duration-300  text-black font-medium"
                 }`}
               >
-                <SheetClose>
+                <SheetClose asChild>
                   <Link href={link.href}>{link.label}</Link>
                 </SheetClose>
               </li>

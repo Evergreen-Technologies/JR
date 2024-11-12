@@ -65,10 +65,12 @@ const page = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-3 ()w-[80%] "
+        className="flex flex-col items-center justify-center gap-y-3 w-[90%] "
       >
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Title</label>
+          <label htmlFor="" className="pl-5 sm:pl-0">
+            Title
+          </label>
           <Editor
             value={post.title}
             onTextChange={(e: any) =>
@@ -86,7 +88,9 @@ const page = () => {
           /> */}
         </div>
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Post</label>
+          <label htmlFor="" className="pl-5 sm:pl-0">
+            Post
+          </label>
           <Editor
             value={post.post}
             onTextChange={(e: any) =>

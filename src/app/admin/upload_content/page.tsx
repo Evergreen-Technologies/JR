@@ -66,7 +66,7 @@ export default function Home() {
   };
 
   return (
-    <main className=" lg:container lg:mx-auto flex min-h-screen items-start justify-around  p-24 pt-10">
+    <main className=" lg:container lg:mx-auto flex min-h-screen items-start sm:justify-around justify-center  sm:p-24 p-5 pt-10">
       <motion.div
         initial={{ x: 0, opacity: 0 }}
         animate={!display ? { x: 0, opacity: 1 } : { x: "-4%", opacity: 1 }}
@@ -201,8 +201,8 @@ export default function Home() {
         animate={!display ? { x: 0, opacity: 0 } : { x: "2%", opacity: 1 }}
         transition={{ duration: 1 }}
         className={`h-44 w-[40%] p-5 pr-0 rounded-md ${
-          !display ? "hidden" : "block mt-32"
-        }`}
+          !display ? "hidden" : "sm:block mt-32"
+        } `}
       >
         {submitted ? (
           <div className="shadow-2xl rounded-[30px] pl-5 py-5">
