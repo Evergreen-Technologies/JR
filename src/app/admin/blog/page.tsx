@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Editor } from "primereact/editor";
 
@@ -40,9 +40,20 @@ const page = () => {
     }
   };
 
-  //   useEffect(() => {
-  //     fetchPosts();
-  //   }, []);
+  const [editorHeight, setEditorHeight] = useState("320px");
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setEditorHeight(window.innerWidth < 768 ? "250px" : "320px");
+    };
+
+    updateHeight(); // Set initial height
+    window.addEventListener("resize", updateHeight); // Update height on resize
+
+    return () => {
+      window.removeEventListener("resize", updateHeight); // Cleanup listener
+    };
+  }, []);
 
   const [progrees, setProgress] = useState(false);
   const buttonEffect = () => {
@@ -97,7 +108,7 @@ const page = () => {
               setPost({ ...post, post: e.htmlValue || "" })
             }
             style={{
-              height: window.innerWidth < 768 ? "250px" : "320px",
+              height: editorHeight,
               fontSize: "17px",
             }}
             className="  rounded-md  pt-3 outline-none"

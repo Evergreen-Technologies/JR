@@ -30,7 +30,9 @@ const page = () => {
       const data = await response.json();
 
       setposts(data.reverse());
-      data.length == 0 && setCheckEmpty(true);
+      if (data.length === 0) {
+        setCheckEmpty(true);
+      }
     } catch (err) {
       console.log("Error Fetching content:", err);
     }

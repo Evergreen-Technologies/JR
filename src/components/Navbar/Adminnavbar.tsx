@@ -25,7 +25,7 @@ const Adminnavbar = () => {
     { label: "Log out", href: "/api/auth/signout" },
   ];
 
-  let text = "/admin/blog";
+  const text = "/admin/blog";
   console.log(text.split("/")[2]);
 
   return (

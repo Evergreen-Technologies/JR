@@ -49,7 +49,9 @@ const page = () => {
       console.log(data);
       data.reverse();
       setPosts(data);
-      data.length == 0 ? setCheckEmpty(true) : null;
+      if (data.length === 0) {
+        setCheckEmpty(true);
+      }
     } catch (err) {
       console.error("Error Fetching content:", err);
     }

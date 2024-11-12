@@ -31,7 +31,7 @@ const page = () => {
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
-      let data = await response.json();
+      const data = await response.json();
 
       // Format dates here
       const formattedData = data.map((post: post) => ({
@@ -41,7 +41,9 @@ const page = () => {
 
       formattedData.reverse();
       setposts(formattedData);
-      posts.length === 0 ? setCheckEmpty(true) : null;
+      if (data.length === 0) {
+        setCheckEmpty(true);
+      }
     } catch (err) {
       console.log("Error Fetching content:", err);
     }
@@ -108,7 +110,7 @@ const page = () => {
         </div>
         {posts.map((post: any, index: number) => {
           return (
-            <div className="w-full  shadow-lg rounded-[20px] p-10">
+            <div className="w-full  shadow-lg rounded-[20px] p-10" key={index}>
               <Link
                 key={index}
                 className=""
