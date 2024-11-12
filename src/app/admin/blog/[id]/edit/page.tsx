@@ -8,7 +8,7 @@ import { useParams } from "next/navigation";
 import { toast } from "react-toastify";
 import { usePathname } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   interface post {
     title: string;
     post: string;
@@ -16,7 +16,7 @@ const page = () => {
     date: Date;
   }
 
-  const [post, setPost] = useState<any>({
+  const [post, setPost] = useState({
     title: "",
     post: "",
     suspended: false,
@@ -142,4 +142,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
