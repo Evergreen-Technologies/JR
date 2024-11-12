@@ -56,6 +56,7 @@ export default function Component() {
             <Input
               id="password"
               type="password"
+              placeholder="password..."
               required
               onChange={(e) => (pass.current = e.target.value)}
             />

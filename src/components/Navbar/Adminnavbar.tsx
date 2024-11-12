@@ -22,7 +22,7 @@ const Adminnavbar = () => {
     { label: "Manage Blog", href: "/admin/blog" },
     { label: "Manage Content", href: "/admin/upload_content" },
     { label: "Manage Event", href: "/admin/event" },
-    { label: "Sign Out", href: "/api/auth/signout" },
+    { label: "Log out", href: "/api/auth/signout" },
   ];
 
   let text = "/admin/blog";

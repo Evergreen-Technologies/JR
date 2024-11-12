@@ -158,7 +158,7 @@ const page = () => {
           return (
             <div
               key={index}
-              className="sm:rounded-[22px] rounded-[15px] max-w-sm p-2 sm:p-10  dark:bg-slate-400 flex flex-col rounded-[22px sm:w-[400px] w-[290px] sm:h-[400px] h-[370px] gap-5  items-center  relative shadow-xl"
+              className="sm:rounded-[22px] rounded-[15px] max-w-sm p-2 sm:p-10  flex flex-col rounded-[22px sm:w-[400px] w-[290px] sm:h-[400px] h-[370px] gap-5  items-center  relative shadow-xl"
             >
               <div className="flex w-full justify-end gap-x-3 items-center relative -top-5">
                 <div className="relative top-[3px]">
@@ -166,14 +166,20 @@ const page = () => {
                     <DialogTrigger asChild>
                       <Image src={View} alt="View" className="h-6 w-6" />
                     </DialogTrigger>
-                    <DialogContent className=" sm:h-[600px] sm:w-[750px] w-[240px] h-[650px] text-black">
+                    <DialogContent className="p-1 sm:p-10 bg-white flex flex-col gap-10  items-center text-black sm:h-[80%] sm:min-w-[40%]">
                       <div
                         key={index}
-                        className="  p-1 sm:p-10  dark:bg-slate-400 flex flex-col gap-10  items-center  h-full"
+                        className=" h-full w-full flex items-center justify-around flex-col"
                       >
                         <div className="flex w-full justify-end gap-x-3 items-center relative -top-3">
                           <div className="relative -top-[2px]">
-                            <Image src={Edit} alt="View" className="h-6 w-6" />
+                            <Link href={`/admin/event/events/${post._id}/edit`}>
+                              <Image
+                                src={Edit}
+                                alt="View"
+                                className="h-6 w-6"
+                              />
+                            </Link>
                           </div>
                           <div>
                             <Dialog>
@@ -247,7 +253,7 @@ const page = () => {
                           </div>
                         </div>
 
-                        <div className="grid grid-flow-col gap-5 text-center auto-cols-max ">
+                        <div className="grid grid-flow-col gap-5 text-center auto-cols-max sm:pt-0 pt-10">
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
                               <span
