@@ -98,7 +98,6 @@ const Index = () => {
               </h3>
               <p className="text-gray-600">
                 Get in touch for questions, consultations, or collaboration
-                opportunities.
               </p>
             </Card>
           </div>
