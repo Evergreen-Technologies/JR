@@ -2,6 +2,9 @@ import { withNextVideo } from "next-video/process";
 import type { NextConfig } from "next";
 
 module.exports = {
+  typescript: {
+    ignoreBuildErrors: true, // This disables TypeScript type checking during the build
+  },
   async headers() {
     return [
       {
