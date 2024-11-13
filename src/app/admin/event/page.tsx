@@ -57,14 +57,14 @@ const page = () => {
     }
   };
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-10">
+    <div className="sm:w-[74%] w-full rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5">
       <form
         action=""
         // className="w-full flex justify-center"
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-5 w-[80%]"
+        className="flex flex-col items-center justify-center gap-y-5 sm:w-[80%] w-full"
       >
         <div className="flex flex-col w-full gap-y-2 items-center">
           <label htmlFor="">Event name</label>

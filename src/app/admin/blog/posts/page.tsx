@@ -31,7 +31,7 @@ const page = () => {
   const fetchPosts = async () => {
     try {
       const response = await fetch("/api/Blog");
-      let data = await response.json();
+      const data = await response.json();
 
       // Format dates here
       const formattedData = data.map((post: post) => ({
@@ -41,7 +41,9 @@ const page = () => {
 
       formattedData.reverse();
       setposts(formattedData);
-      posts.length === 0 ? setCheckEmpty(true) : null;
+      if (data.length === 0) {
+        setCheckEmpty(true);
+      }
     } catch (err) {
       console.log("Error Fetching content:", err);
     }
@@ -62,7 +64,7 @@ const page = () => {
       }
       const updatedPosts = posts.filter((post: any) => post._id !== id); // Use _id for filtering
 
-      setposts(updatedPosts.reverse());
+      setposts(updatedPosts);
       console.log("Post deleted successfully:", await response.json());
     } catch (error) {
       console.error("Error deleting post:", error);
@@ -80,8 +82,8 @@ const page = () => {
     fetchPosts();
   }, []);
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-start  min-h-[40vh] shadow-2xl py-10">
-      <ul className="w-[90%] flex flex-col item-center justify-center h-full">
+    <div className="sm:w-[74%] rounded-[30px] flex justify-center items-start  min-h-[40vh] shadow-2xl py-10">
+      <ul className="sm:w-[90%] flex flex-col item-center justify-center h-full">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full">
             <Progress value={progress} className="w-[30%] " />
@@ -108,14 +110,14 @@ const page = () => {
         </div>
         {posts.map((post: any, index: number) => {
           return (
-            <div className="w-full  shadow-lg rounded-[20px] p-10">
+            <div className="w-full  shadow-lg rounded-[20px] p-10" key={index}>
               <Link
                 key={index}
                 className=""
                 href={`/admin/blog/${post._id}/post`}
               >
                 <p
-                  className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
+                  className="bg-gray-200 py-2  sm:rounded-full rounded-[20px] pl-4 sm:text-[18px] text-[15px]
             "
                 >
                   <div
@@ -129,7 +131,7 @@ const page = () => {
                   />
                 </p>
                 <div
-                  className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+                  className="pl-4 mt-4 bg-gray-100 min-h-10 sm:rounded-[30px] rounded-[20px] flex items-center sm:text-[16px] text-[14px] py-3"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.post.length > 200
@@ -139,7 +141,7 @@ const page = () => {
                 />
               </Link>
               <div className="flex justify-end pt-5">
-                <div className="w-1/3 flex justify-start gap-x-3">
+                <div className="sm:w-1/3 w-1/2 flex justify-start gap-x-3">
                   {current_path.includes("admin") && (
                     <div className="flex gap-x-2 items-center relative">
                       <span className="relative -top-1">
@@ -151,25 +153,7 @@ const page = () => {
                           />
                         </Link>
                       </span>
-                      {/* <span>
-                      <button
-                        onClick={() => {
-                          setposts((prevPosts: any) =>
-                            prevPosts.map((p) =>
-                              p._id === post._id
-                                ? { ...p, suspended: !p.suspended }
-                                : p
-                            )
-                          );
-                        }}
-                      >
-                        <Image
-                          src={!post?.suspended ? Suspend : ReallySuspened}
-                          alt="Suspend post"
-                          className="h-6 w-6"
-                        />
-                      </button>
-                    </span> */}
+
                       <span>
                         <button
                           onClick={() => {

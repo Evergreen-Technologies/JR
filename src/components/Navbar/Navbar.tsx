@@ -11,13 +11,11 @@ const Navbar = () => {
     { label: "Content", href: "/user/video_library" },
     { label: "Blog", href: "/user/blog" },
     { label: "Events", href: "/user/event" },
-    { label: "About", href: "/user/about" },
     { label: "Contact", href: "/user/contact" },
-    // { label: "Dashboard", href: "/events" },
   ];
   return (
     <nav className="lg:container lg:w-full lg:mx-auto mx-[20px] rounded-full  shadow-xl border-t border-t-gray-200">
-      <ul className="flex w-full items-center justify-around py-3">
+      <ul className="flex w-full items-center justify-around py-3 ">
         {links.map((link, index) => (
           <li
             key={index}

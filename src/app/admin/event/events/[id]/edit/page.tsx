@@ -14,13 +14,15 @@ import { toast } from "react-toastify";
 
 const page = () => {
   interface event {
+    _id: string;
     name: string;
     details: string;
     location: string;
     date: Dayjs;
   }
 
-  const [event, setEvent] = useState({
+  const [event, setEvent] = useState<event>({
+    _id: "",
     name: "",
     details: "",
     location: "",
@@ -38,6 +40,7 @@ const page = () => {
       console.log(selectById);
       if (selectById) {
         setEvent({
+          _id: selectById._id,
           name: selectById.name,
           details: selectById.details,
           location: selectById.location,
@@ -52,7 +55,7 @@ const page = () => {
   const handleEdit = async () => {
     try {
       console.log(event);
-      const response = await axios.put(`/api/Event`, event);
+      const response = await axios.put("/api/Event", event);
       console.log("submitted SuccesFully:", response.data);
 
       if (response.data) {
@@ -64,6 +67,7 @@ const page = () => {
         toast.error("Something went wrong, please try again!");
       }
       setEvent({
+        _id: "",
         name: "",
         details: "",
         location: "",
@@ -93,12 +97,12 @@ const page = () => {
   }, []);
 
   return (
-    <div className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-10">
+    <div className="sm:w-[74%] w-[95%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-10">
       <form
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-5 w-[80%]"
+        className="flex flex-col items-center justify-center gap-y-5 sm:w-[80%] w-full"
       >
         <div className="flex flex-col w-full gap-y-2 items-center">
           <label htmlFor="">Event name</label>
@@ -107,7 +111,11 @@ const page = () => {
             onTextChange={(e: any) =>
               setEvent({ ...event, name: e.htmlValue || "" })
             }
-            style={{ height: "60px", fontSize: "17px" }}
+            style={
+              window.innerWidth > 768
+                ? { height: "60px", fontSize: "17px" }
+                : { height: "70px", fontSize: "15px", paddingBottom: "10px" }
+            }
             className="  rounded-md  pt-3 outline-none w-[80%] shadow-xl"
           />
         </div>
@@ -118,7 +126,11 @@ const page = () => {
             onTextChange={(e: any) =>
               setEvent({ ...event, details: e.htmlValue || "" })
             }
-            style={{ height: "60px", fontSize: "17px" }}
+            style={
+              window.innerWidth > 768
+                ? { height: "60px", fontSize: "17px" }
+                : { height: "70px", fontSize: "15px", paddingBottom: "10px" }
+            }
             className="  rounded-md  pt-3 outline-none w-[80%] shadow-xl"
           />
         </div>
@@ -130,7 +142,11 @@ const page = () => {
             onTextChange={(e: any) =>
               setEvent({ ...event, location: e.htmlValue || "" })
             }
-            style={{ height: "60px", fontSize: "17px" }}
+            style={
+              window.innerWidth > 768
+                ? { height: "60px", fontSize: "17px" }
+                : { height: "70px", fontSize: "15px", paddingBottom: "10px" }
+            }
             className="  rounded-md  pt-3 outline-none w-[80%] shadow-xl"
           />
         </div>
@@ -150,7 +166,7 @@ const page = () => {
 
         <div className="flex justify-center w-full">
           <button
-            className={`bg-red-700 text-white font-bold px-44 py-2 rounded-[4px] outline-none`}
+            className={`bg-red-700 text-white font-bold sm:px-44 px-32 py-2 rounded-[4px] outline-none`}
             onClick={() => {
               handleEdit();
               buttonEffect();

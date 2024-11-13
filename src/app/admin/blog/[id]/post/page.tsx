@@ -90,7 +90,7 @@ const page = () => {
     return () => clearTimeout(timer);
   }, []);
   return (
-    <div className="w-[74%]  flex items-start justify-center shadow-2xl min-h-[40vh] rounded-[30px] pt-10">
+    <div className="sm:w-[74%] w-[90%]  flex items-start justify-center shadow-2xl min-h-[40vh] rounded-[30px] pt-10">
       {!post.title && (
         <div className="w-[90%]">
           <Progress value={progress} className="w-full " />
@@ -104,7 +104,11 @@ const page = () => {
                 <div className="flex gap-x-10 items-center justify-end w-full mb-10">
                   <span className="relative -top-1">
                     <Link href={`/admin/blog/${post._id}/edit`}>
-                      <Image src={Edit} alt="Edit post" className="h-5 w-5" />
+                      <Image
+                        src={Edit}
+                        alt="Edit post"
+                        className="h-6 w-6 min-h-5 min-w-5"
+                      />
                     </Link>
                   </span>
                   <span>
@@ -123,7 +127,7 @@ const page = () => {
                       <Image
                         src={post.suspended ? ReallySuspended : Suspend}
                         alt="Suspend post"
-                        className="h-8 w-8"
+                        className="h-8 w-8 min-h-6 min-w-6"
                       />
                     </button>
                   </span>
@@ -136,7 +140,7 @@ const page = () => {
                       <Image
                         src={Delete}
                         alt="Delete post"
-                        className="h-8 w-8"
+                        className="h-8 w-8 min-h-6 min-w-6"
                       />
                     </button>
                   </span>
@@ -146,15 +150,18 @@ const page = () => {
           </div>
           <p>
             <div
-              className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]"
+              className="bg-gray-200 py-2  sm:rounded-full rounded-[20px] pl-4 sm:text-[18px] text-[15px]"
               dangerouslySetInnerHTML={{
                 __html: post.title,
               }}
             />
           </p>
-          <p className=" mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3 text-justify pt-10 pb-10 pl-10 pr-10">
+          <p
+            className=" mt-4 bg-gray-100 min-h-10 sm:rounded-[30px] rounded-[20px] flex items-center text-[16px] text-justify sm:pt-10 sm:pb-10 sm:pl-10 sm:pr-10 p-3
+          "
+          >
             <div
-              className="pl-4 mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
+              className="sm:pl-4 sm:mt-4 bg-gray-100 min-h-10 rounded-[30px] flex items-center text-[16px] py-3"
               dangerouslySetInnerHTML={{
                 __html: post.post,
               }}

@@ -6,7 +6,7 @@ import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import Plyr from "plyr-react";
+import dynamic from "next/dynamic";
 import "plyr/dist/plyr.css";
 import {
   Dialog,
@@ -21,6 +21,8 @@ import { formatDistanceToNow } from "date-fns";
 import Tick from "@/../public/tick.svg";
 import Image from "next/image";
 
+const Plyr = dynamic(() => import("plyr-react"), { ssr: false });
+
 export default function Home() {
   interface form {
     title: string;
@@ -33,6 +35,8 @@ export default function Home() {
     imageUrl: "",
     videoUrl: "",
   });
+
+  const [previewControl, setPreviewControl] = useState(false);
 
   const [display, setDisplay] = useState(false);
   const [submitted, setSubmitted] = useState<form>({
@@ -66,7 +70,7 @@ export default function Home() {
   };
 
   return (
-    <main className=" lg:container lg:mx-auto flex min-h-screen items-start justify-around  p-24 pt-10">
+    <main className=" lg:container lg:mx-auto flex min-h-screen items-start sm:justify-around justify-center  sm:p-24 p-5 pt-10">
       <motion.div
         initial={{ x: 0, opacity: 0 }}
         animate={!display ? { x: 0, opacity: 1 } : { x: "-4%", opacity: 1 }}
@@ -201,8 +205,8 @@ export default function Home() {
         animate={!display ? { x: 0, opacity: 0 } : { x: "2%", opacity: 1 }}
         transition={{ duration: 1 }}
         className={`h-44 w-[40%] p-5 pr-0 rounded-md ${
-          !display ? "hidden" : "block mt-32"
-        }`}
+          !display ? "hidden" : "sm:block mt-32"
+        } `}
       >
         {submitted ? (
           <div className="shadow-2xl rounded-[30px] pl-5 py-5">

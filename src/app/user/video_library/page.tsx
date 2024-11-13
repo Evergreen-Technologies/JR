@@ -1,28 +1,15 @@
 "use client";
-import PlayIcon from "@/components/PlayIcon";
+
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
-import ReactPlayer from "react-player/lazy";
-import Video from "next-video";
-import Plyr from "plyr-react";
+import dynamic from "next/dynamic";
+// import Plyr from "plyr-react";
 import "plyr/dist/plyr.css";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import { Progress } from "@/components/ui/progress";
-import { setSourceMapsEnabled } from "process";
-import { formatDistanceToNow } from "date-fns";
-
-// import { CldVideoPlayer } from "next-cloudinary";
-// import "next-cloudinary/dist/cld-video-player.css";
+const Plyr = dynamic(() => import("plyr-react"), { ssr: false });
 
 const Page = () => {
   const [render, setRender] = useState([]);
@@ -58,7 +45,10 @@ const Page = () => {
         )}
 
         {render.map((vid: any, index: number) => (
-          <div className="rounded-[12px] flex items-center justify-center shadow-xl  h-[380px] w-[400px] relative">
+          <div
+            className="rounded-[12px] flex items-start justify-center shadow-xl  h-[250px] w-[400px] relative"
+            key={index}
+          >
             <Plyr
               source={{
                 type: "video",

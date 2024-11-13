@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Editor } from "primereact/editor";
 
@@ -40,9 +40,20 @@ const page = () => {
     }
   };
 
-  //   useEffect(() => {
-  //     fetchPosts();
-  //   }, []);
+  const [editorHeight, setEditorHeight] = useState("320px");
+
+  useEffect(() => {
+    const updateHeight = () => {
+      setEditorHeight(window.innerWidth < 768 ? "250px" : "320px");
+    };
+
+    updateHeight(); // Set initial height
+    window.addEventListener("resize", updateHeight); // Update height on resize
+
+    return () => {
+      window.removeEventListener("resize", updateHeight); // Cleanup listener
+    };
+  }, []);
 
   const [progrees, setProgress] = useState(false);
   const buttonEffect = () => {
@@ -56,7 +67,7 @@ const page = () => {
 
   return (
     <div
-      className="w-[74%] rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
+      className="sm:w-[74%] w-full rounded-[30px] flex justify-center items-center min-h-[65vh] shadow-2xl py-5
     "
     >
       <form
@@ -65,10 +76,12 @@ const page = () => {
         onSubmit={(e) => {
           e.preventDefault();
         }}
-        className="flex flex-col items-center justify-center gap-y-3 w-[80%]"
+        className="flex flex-col items-center justify-center gap-y-3 w-[90%] "
       >
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Title</label>
+          <label htmlFor="" className="pl-5 sm:pl-0">
+            Title
+          </label>
           <Editor
             value={post.title}
             onTextChange={(e: any) =>
@@ -86,21 +99,20 @@ const page = () => {
           /> */}
         </div>
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Post</label>
+          <label htmlFor="" className="pl-5 sm:pl-0">
+            Post
+          </label>
           <Editor
             value={post.post}
             onTextChange={(e: any) =>
               setPost({ ...post, post: e.htmlValue || "" })
             }
-            style={{ height: "320px", fontSize: "17px" }}
+            style={{
+              height: editorHeight,
+              fontSize: "17px",
+            }}
             className="  rounded-md  pt-3 outline-none"
           />
-          {/* <textarea
-            value={post.post}
-            onChange={(e) => setPost({ ...post, post: e.target.value })}
-            className="border border-gray-300 h-32 rounded-md pl-3 pt-3 outline-none"
-            required
-          /> */}
         </div>
         <div className="flex justify-end w-full">
           <button
