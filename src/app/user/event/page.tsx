@@ -43,7 +43,7 @@ const page = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get("/api/Event");
+      const response = await axios.get("/api/Event", { timeout: 100000 });
       const data = response.data;
       console.log(data);
       data.reverse();
