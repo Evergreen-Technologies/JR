@@ -3,12 +3,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from "react";
-
-import Plyr from "plyr-react";
+import dynamic from "next/dynamic";
+// import Plyr from "plyr-react";
 import "plyr/dist/plyr.css";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 import { Progress } from "@/components/ui/progress";
+const Plyr = dynamic(() => import("plyr-react"), { ssr: false });
 
 const Page = () => {
   const [render, setRender] = useState([]);

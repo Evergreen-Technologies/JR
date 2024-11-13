@@ -6,7 +6,7 @@ import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
-import Plyr from "plyr-react";
+import dynamic from "next/dynamic";
 import "plyr/dist/plyr.css";
 import {
   Dialog,
@@ -20,6 +20,8 @@ import {
 import { formatDistanceToNow } from "date-fns";
 import Tick from "@/../public/tick.svg";
 import Image from "next/image";
+
+const Plyr = dynamic(() => import("plyr-react"), { ssr: false });
 
 export default function Home() {
   interface form {
