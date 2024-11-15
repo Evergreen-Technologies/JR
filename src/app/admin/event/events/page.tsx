@@ -1,6 +1,15 @@
 "use client";
 import axios from "axios";
 import dayjs from "dayjs";
+import "dayjs/locale/ar";
+import utc from "dayjs/plugin/utc";
+import timezone from "dayjs/plugin/timezone";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
+
+dayjs.locale("ar");
+
 import React, { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
@@ -127,14 +136,14 @@ const page = () => {
     <div className="sm:w-[74%] w-[90%] min-h-[40vh] rounded-[30px] shadow-2xl flex items-start justify-center py-5">
       {!posts[0] && !checkEmpty && (
         <div className="flex items-start justify-center w-[80%] pt-12">
-          <Progress value={progress} className="w-[30%]" />
+          <Progress value={progress} className="w-[90%]" />
         </div>
       )}
       <div className="">
         {checkEmpty && posts.length === 0 && (
           <div className="flex items-center justify-center pt-10 flex-col">
             <div className="text-[18px] font-sans">
-              No Record of Events Yet!
+              لا يوجد سجل للأحداث بعد!
             </div>
             <div className="pt-14">
               <span>
@@ -196,11 +205,11 @@ const page = () => {
                               <DialogContent>
                                 <div className="flex flex-col w-[300px] h-[170px] rounded-[6px] items-center justify-center gap-y-5">
                                   <div className="text-[17px]">
-                                    Are you sure you want to delete this Event?
+                                    هل أنت متأكد من رغبتك في حذف هذا الحدث؟
                                   </div>
                                   <div className="flex items-center justify-end w-full pr-10 gap-x-3">
                                     <DialogTrigger asChild>
-                                      <button>Cancel</button>
+                                      <button>إلغاء</button>
                                     </DialogTrigger>
                                     <DialogTrigger>
                                       <button
@@ -209,7 +218,7 @@ const page = () => {
                                           deletePost(post._id);
                                         }}
                                       >
-                                        Delete
+                                        حذف
                                       </button>
                                     </DialogTrigger>
                                   </div>
@@ -246,10 +255,12 @@ const page = () => {
                           <div className=" px-3 py-1  w-full text-center text-black sm:text-[18px] text-[14px]">
                             <div className="flex items-center justify-center">
                               <span className="w-1/2 border-r pr-3 border-r-black">
-                                {dayjs(post.date).format("MMM DD, YYYY")}
+                                {dayjs(post.date)
+                                  .locale("ar")
+                                  .format("DD MMM, YYYY")}
                               </span>
                               <span className="w-1/2">
-                                {dayjs(post.date).format("h:mm A")}
+                                {dayjs(post.date).locale("ar").format("h:mm A")}
                               </span>
                             </div>
                           </div>
@@ -262,7 +273,7 @@ const page = () => {
                                 style={{ "--value": countdown.days }}
                               ></span>
                             </span>
-                            days
+                            أيام
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -270,7 +281,7 @@ const page = () => {
                                 style={{ "--value": countdown.hours }}
                               ></span>
                             </span>
-                            hours
+                            ساعات
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -278,7 +289,7 @@ const page = () => {
                                 style={{ "--value": countdown.minutes }}
                               ></span>
                             </span>
-                            min
+                            دقائق
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -286,7 +297,7 @@ const page = () => {
                                 style={{ "--value": countdown.seconds }}
                               ></span>
                             </span>
-                            sec
+                            ثواني
                           </div>
                         </div>
                       </div>
@@ -306,11 +317,11 @@ const page = () => {
                     <DialogContent>
                       <div className="flex flex-col w-[400px] h-[170px] rounded-[6px] items-center justify-center gap-y-5">
                         <div className="text-[17px] font-bold">
-                          Are you sure you want to delete this Event?
+                          هل أنت متأكد أنك تريد حذف هذا الحدث؟
                         </div>
                         <div className="flex items-center justify-end w-full pr-10 gap-x-3">
                           <DialogTrigger asChild>
-                            <button>Cancel</button>
+                            <button>إلغاء</button>
                           </DialogTrigger>
                           <DialogTrigger>
                             <button
@@ -319,7 +330,7 @@ const page = () => {
                                 deletePost(post._id);
                               }}
                             >
-                              Delete
+                              حذف
                             </button>
                           </DialogTrigger>
                         </div>
@@ -379,25 +390,25 @@ const page = () => {
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.days }}></span>
                   </span>
-                  days
+                  أيام
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.hours }}></span>
                   </span>
-                  hours
+                  ساعات
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.minutes }}></span>
                   </span>
-                  min
+                  دقائق
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.seconds }}></span>
                   </span>
-                  sec
+                  ثواني
                 </div>
               </div>
             </div>

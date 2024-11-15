@@ -21,7 +21,7 @@ const Connect: React.FC = () => {
         )
         .then(
           () => {
-            toast.success("Message sent successfully!");
+            toast.success("تم إرسال الرسالة بنجاح!");
           },
           (error) => {
             toast.error(`Failed to send message. Please try again.${error}`);
@@ -45,11 +45,11 @@ const Connect: React.FC = () => {
           className="flex flex-col px-4 gap-y-3 sm:gap-y-6 pt-3 pb-5 "
         >
           <label htmlFor="">
-            Name <span className="text-[#7F8386]">(required)</span>
+            الاسم <span className="text-[#7F8386]">(مطلوب)</span>
           </label>
           <div className="w-full flex gap-x-3">
             <span className="w-1/2">
-              <label htmlFor="firstname">First Name</label>
+              <label htmlFor="firstname">الاسم الأول</label>
               <input
                 type="text"
                 id="firstname"
@@ -59,7 +59,7 @@ const Connect: React.FC = () => {
               />
             </span>
             <span className="w-1/2">
-              <label htmlFor="lastname">Last Name</label>
+              <label htmlFor="lastname">الاسم الأخير</label>
               <input
                 type="text"
                 id="lastname"
@@ -71,7 +71,7 @@ const Connect: React.FC = () => {
           </div>
           <div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">البريد الإلكتروني</label>
               <input
                 type="email"
                 id="email"
@@ -82,7 +82,7 @@ const Connect: React.FC = () => {
             </div>
           </div>
           <div>
-            <label htmlFor="subject">Subject</label>
+            <label htmlFor="subject">الموضوع</label>
             <input
               type="text"
               id="subject"
@@ -92,7 +92,7 @@ const Connect: React.FC = () => {
             />
           </div>
           <div>
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">الرسالة</label>
             <textarea
               name="message"
               id="message"
@@ -105,7 +105,7 @@ const Connect: React.FC = () => {
               type="submit"
               className="border px-4 py-2 text-[#F5F9FF] bg-[#951d1d] text-[14px] sm:text-[20px]"
             >
-              Submit
+              إرسال
             </button>
           </div>
         </form>

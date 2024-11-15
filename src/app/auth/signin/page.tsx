@@ -32,15 +32,15 @@ export default function Component() {
   return (
     <Card className="mx-auto max-w-sm mt-[230px]">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Login</CardTitle>
+        <CardTitle className="text-2xl font-bold">تسجيل الدخول</CardTitle>
         <CardDescription>
-          Enter your username and password to login to your account
+          أدخل اسم المستخدم وكلمة المرور الخاصة بك لتسجيل الدخول إلى حسابك
         </CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Username</Label>
+            <Label htmlFor="email">اسم المستخدم</Label>
             <Input
               id="email"
               type="email"
@@ -52,7 +52,7 @@ export default function Component() {
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">كلمة المرور</Label>
             <Input
               id="password"
               type="password"
@@ -62,7 +62,7 @@ export default function Component() {
             />
           </div>
           <Button type="submit" className="w-full" onClick={onsubmit}>
-            Login
+            تسجيل الدخول
           </Button>
         </div>
       </CardContent>

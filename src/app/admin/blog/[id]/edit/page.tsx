@@ -46,12 +46,12 @@ const Page = () => {
       console.log("submitted SuccesFully:", response.data);
 
       if (response.data) {
-        toast.success("Succesfully Edited!");
+        toast.success("تم التعديل بنجاح!");
         setTimeout(() => {
           window.location.href = "/admin/blog/posts";
         }, 1500);
       } else {
-        toast.error("Something went wrong, please try again!");
+        toast.error("حدث خطأ ما، يرجى المحاولة مرة أخرى!");
       }
       setPost({
         title: "",
@@ -95,7 +95,7 @@ const Page = () => {
         className="flex flex-col items-center justify-center gap-y-3 w-[80%]"
       >
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Title</label>
+          <label htmlFor="">العنوان</label>
           <Editor
             value={post.title}
             onTextChange={(e: any) =>
@@ -106,7 +106,7 @@ const Page = () => {
           />
         </div>
         <div className="flex flex-col w-full gap-y-2">
-          <label htmlFor="">Post</label>
+          <label htmlFor="">المنشور</label>
           <Editor
             value={post.post}
             onTextChange={(e: any) =>
@@ -124,7 +124,7 @@ const Page = () => {
               buttonEffect();
             }}
           >
-            {!progrees && <>Edit Post</>}
+            {!progrees && <>تعديل المنشور</>}
             {progrees && (
               <CircularProgress
                 style={{

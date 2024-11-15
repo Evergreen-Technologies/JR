@@ -7,11 +7,11 @@ const Navbar = () => {
   const current_path1 = usePathname();
   console.log(current_path1);
   const links = [
-    { label: "Home", href: "/" },
-    { label: "Content", href: "/user/video_library" },
-    { label: "Blog", href: "/user/blog" },
-    { label: "Events", href: "/user/event" },
-    { label: "Contact", href: "/user/contact" },
+    { label: "الرئيسية", href: "/" },
+    { label: "المحتوى", href: "/user/video_library" },
+    { label: "المدونة", href: "/user/blog" },
+    { label: "الفعاليات", href: "/user/event" },
+    { label: "الاتصال", href: "/user/contact" },
   ];
   return (
     <nav className="lg:container lg:w-full lg:mx-auto mx-[20px] rounded-full  shadow-xl border-t border-t-gray-200">
