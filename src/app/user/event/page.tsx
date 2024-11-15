@@ -105,7 +105,7 @@ const page = () => {
     <div className="sm:w-[80%] w-[95%] min-h-[40vh] rounded-[30px] shadow-2xl flex items-start justify-center py-5 lg:container lg:mx-auto sm:mt-10">
       {!posts[0] && !checkEmpty && (
         <div className="flex items-start justify-center w-[80%] pt-12">
-          <Progress value={progress} className="w-[30%]" />
+          <Progress value={progress} className="w-[90%]" />
         </div>
       )}
       <div className="">

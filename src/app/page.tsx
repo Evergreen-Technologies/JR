@@ -3,8 +3,44 @@ import { Card } from "@/components/ui/card";
 import { BookOpen, Calendar, Video, Mail } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
 const Index = () => {
+  const testimonials = [
+    {
+      quote:
+        "انتباه دقيق وميزات مبتكرة قامت بتغيير سير عملنا تماما. هذا هو بالضبط ما كنا نبحث عنه.",
+      name: "سارة تشين",
+      designation: "مدير المنتج في تيك فلو",
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote: "كان التنفيذ سلساً و超عت توقعاتنا. مرونة المنصة مدهشة.",
+      name: "مايكل رودريغيز",
+      designation: "مدير تكنولوجيا المعلومات في إينوفيت سبير",
+      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "لقد حسنت هذه الحلول من إنتاجية فريقنا بشكل كبير. واجهة المستخدم البسيطة تجعل المهام المعقدة سهلة.",
+      name: "إميلي واتسون",
+      designation: "مدير العمليات في كلاود سكيل",
+      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote: "دعم ممتاز وميزات قوية. نادراً ما تجد منتجاً يفي بكل ما يpromis.",
+      name: "جيمس كيم",
+      designation: "قائد فريق الهندسة في داتا برو",
+      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+    {
+      quote:
+        "لقد غيرت قابلية التوسع والأداء لعملنا. نوصي به بشدة لأي عمل ناشئ.",
+      name: "ليزا تومسون",
+      designation: "نائب الرئيس لتقنية المعلومات في فوتشر نت",
+      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    },
+  ];
   return (
     <div className="min-h-screen lg:container lg:mx-auto shadow-2xl rounded-[30px] mt-10">
       {/* Hero Section */}
@@ -41,13 +77,9 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl lg:text-4xl font-bold text-islamic-primary mb-6">
-              About Your Teacher
+              عن معلمك
             </h2>
-            <p className="text-gray-600 mb-8">
-              With over 15 years of experience in Islamic studies and education,
-              I am dedicated to spreading authentic knowledge and understanding
-              of Islam through modern educational methods and technology.
-            </p>
+            <AnimatedTestimonials testimonials={testimonials} />
           </div>
         </div>
       </section>

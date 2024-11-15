@@ -39,8 +39,8 @@ const Page = () => {
     <div className="lg:container lg:w-full lg:mx-auto mx-[20px] min-h-[93vh]  mt-10 rounded-[30px] shadow-2xl">
       <div className="flex flex-wrap gap-10 justify-center items-center w-full p-10">
         {!render[0] && (
-          <div className="w-[90%] pt-10">
-            <Progress value={progress} className="w-[10%] " />
+          <div className="w-[90%] pt-10 flex items-center">
+            <Progress value={progress} className="w-[95%]" />
           </div>
         )}
 

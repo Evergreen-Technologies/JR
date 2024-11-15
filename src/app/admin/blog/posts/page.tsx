@@ -86,7 +86,7 @@ const page = () => {
       <ul className="sm:w-[90%] flex flex-col item-center justify-center h-full">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full">
-            <Progress value={progress} className="w-[30%] " />
+            <Progress value={progress} className="w-[90%] " />
           </div>
         )}
         <div className="">
