@@ -19,10 +19,10 @@ const Adminnavbar = () => {
   console.log(current_path2);
   const links = [
     // { label: "Home", href: "/admin" },
-    { label: "Manage Blog", href: "/admin/blog" },
-    { label: "Manage Content", href: "/admin/upload_content" },
-    { label: "Manage Event", href: "/admin/event" },
-    { label: "Log out", href: "/api/auth/signout" },
+    { label: "إدارة المدونة", href: "/admin/blog" },
+    { label: "إدارة المحتوى", href: "/admin/upload_content" },
+    { label: "إدارة الحدث", href: "/admin/event" },
+    { label: "تسجيل الخروج", href: "/api/auth/signout" },
   ];
 
   const text = "/admin/blog";

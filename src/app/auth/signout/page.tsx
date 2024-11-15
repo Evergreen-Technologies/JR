@@ -30,13 +30,13 @@ export default function Component() {
   return (
     <Card className="mx-auto max-w-sm mt-[230px]">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold">Log out</CardTitle>
-        <CardDescription>Are you sure you want to signout ?</CardDescription>
+        <CardTitle className="text-2xl font-bold">تسجيل الخروج</CardTitle>
+        <CardDescription>هل أنت متأكد من أنك تريد الخروج؟</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
           <Button type="submit" className="w-full" onClick={onsubmit}>
-            Logout
+            خروج
           </Button>
         </div>
       </CardContent>

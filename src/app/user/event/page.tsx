@@ -22,11 +22,13 @@ import Delete from "@/../public/delete.svg";
 import Edit from "@/../public/edit.svg";
 import Link from "next/link";
 
+// Import the Arabic locale
+import "dayjs/locale/ar";
+
 const page = () => {
   interface post {
     name: string;
     details: string;
-
     location: string;
     date: string;
   }
@@ -178,10 +180,12 @@ const page = () => {
                           <div className=" px-3 py-1  w-full text-center text-black sm:text-[18px] text-[14px]">
                             <div className="flex items-center justify-center">
                               <span className="w-1/2 border-r pr-3 border-r-black">
-                                {dayjs(post.date).format("MMM DD, YYYY")}
+                                {dayjs(post.date)
+                                  .locale("ar")
+                                  .format("MMM DD, YYYY")}
                               </span>
                               <span className="w-1/2">
-                                {dayjs(post.date).format("h:mm A")}
+                                {dayjs(post.date).locale("ar").format("h:mm A")}
                               </span>
                             </div>
                           </div>
@@ -194,7 +198,7 @@ const page = () => {
                                 style={{ "--value": countdown.days }}
                               ></span>
                             </span>
-                            days
+                            أيام
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -202,7 +206,7 @@ const page = () => {
                                 style={{ "--value": countdown.hours }}
                               ></span>
                             </span>
-                            hours
+                            ساعات
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -210,7 +214,7 @@ const page = () => {
                                 style={{ "--value": countdown.minutes }}
                               ></span>
                             </span>
-                            min
+                            دقائق
                           </div>
                           <div className="flex flex-col">
                             <span className="countdown font-mono text-5xl">
@@ -218,7 +222,7 @@ const page = () => {
                                 style={{ "--value": countdown.seconds }}
                               ></span>
                             </span>
-                            sec
+                            ثانية
                           </div>
                         </div>
                       </div>
@@ -263,10 +267,10 @@ const page = () => {
                 <div className=" px-3 py-1  w-full text-center text-black sm:text-[16px] text-[14px]">
                   <div className="flex items-center justify-center">
                     <span className="w-1/2 border-r pr-3 border-r-black">
-                      {dayjs(post.date).format("MMM DD, YYYY")}
+                      {dayjs(post.date).locale("ar").format("MMM DD, YYYY")}
                     </span>
                     <span className="w-1/2">
-                      {dayjs(post.date).format("h:mm A")}
+                      {dayjs(post.date).locale("ar").format("h:mm A")}
                     </span>
                   </div>
                 </div>
@@ -277,25 +281,25 @@ const page = () => {
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.days }}></span>
                   </span>
-                  days
+                  أيام
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.hours }}></span>
                   </span>
-                  hours
+                  ساعات
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.minutes }}></span>
                   </span>
-                  min
+                  دقائق
                 </div>
                 <div className="flex flex-col">
                   <span className="countdown font-mono sm:text-5xl text-4xl">
                     <span style={{ "--value": countdown.seconds }}></span>
                   </span>
-                  sec
+                  ثواني
                 </div>
               </div>
             </div>

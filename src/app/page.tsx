@@ -12,24 +12,24 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center animate-fadeIn">
             <h1 className="text-4xl lg:text-6xl font-bold text-islamic-primary mb-6">
-              Welcome to Islamic Knowledge Hub
+              مرحباً بكم في مركز المعرفة الإسلامية
             </h1>
             <p className="text-lg lg:text-xl text-gray-600 mb-8">
-              Embark on a journey of Islamic learning with comprehensive
-              resources, expert guidance, and a supportive community.
+              انطلق في رحلة التعلم الإسلامي مع موارد شاملة وإرشاد الخبراء ومجتمع
+              داعم.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href={"/user/video_library"}
                 className=" text-islamic-primary hover:bg-islamic-light bg-black text-white px-8 py-2 rounded-[7px] text-[15px]"
               >
-                Explore Content
+                استكشف المحتوى
               </Link>
               <Link
                 href={"/user/contact"}
                 className=" text-islamic-primary hover:bg-islamic-light bg-white text-black px-12 py-2 rounded-[5px] text-[15px] border border-slate-600"
               >
-                Contact
+                الاتصال
               </Link>
             </div>
           </div>
@@ -55,49 +55,48 @@ const Index = () => {
       <section className="py-16 bg-islamic-light/20">
         <div className="container mx-auto px-4">
           <h2 className="text-3xl lg:text-4xl font-bold text-islamic-primary text-center mb-12">
-            what to Expect
+            ما يمكن توقعه
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 pl-10">
             <Card className="feature-card">
               <BookOpen className="w-12 h-12 text-islamic-accent mb-4" />
               <h3 className="text-xl font-semibold text-islamic-primary mb-2">
-                Islamic Blog
+                المدونة الإسلامية
               </h3>
               <p className="text-gray-600">
-                Regular articles on various Islamic topics, from basic
-                principles to advanced concepts.
+                مقالات منتظمة حول مواضيع إسلامية متنوعة، من المبادئ الأساسية إلى
+                المفاهيم المتقدمة.
               </p>
             </Card>
 
             <Card className="feature-card">
               <Calendar className="w-12 h-12 text-islamic-accent mb-4" />
               <h3 className="text-xl font-semibold text-islamic-primary mb-2">
-                Events Calendar
+                التقويم الفعاليات
               </h3>
               <p className="text-gray-600">
-                Stay updated with upcoming lectures, workshops, and special
-                programs.
+                ابقى على اطلاع دائم بالمحاضرات والورشات والبرامج الخاصة القادمة.
               </p>
             </Card>
 
             <Card className="feature-card">
               <Video className="w-12 h-12 text-islamic-accent mb-4" />
               <h3 className="text-xl font-semibold text-islamic-primary mb-2">
-                Video Library
+                مكتبة الفيديو
               </h3>
               <p className="text-gray-600">
-                Access a growing collection of educational videos and recorded
-                lectures.
+                الوصول إلى مجموعة متنامية من الفيديوهات التعليمية والمحاضرات
+                المسجلة.
               </p>
             </Card>
 
             <Card className="feature-card">
               <Mail className="w-12 h-12 text-islamic-accent mb-4" />
               <h3 className="text-xl font-semibold text-islamic-primary mb-2">
-                Direct Contact
+                الاتصال المباشر
               </h3>
               <p className="text-gray-600">
-                Get in touch for questions, consultations, or collaboration
+                اتصل بنا للاستفسارات أو الاستشارات أو التعاون
               </p>
             </Card>
           </div>
@@ -106,17 +105,16 @@ const Index = () => {
       <section className="py-16 bg-islamic-primary ">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-            Start Your Journey Today
+            ابدأ رحلتك اليوم
           </h2>
           <p className="text-lg mb-8 text-islamic-light">
-            Join our growing community of seekers of knowledge and benefit from
-            our comprehensive resources.
+            انضم إلى مجتمعنا النامي من باحثي المعرفة واستفد من مواردنا الشاملة.
           </p>
           <Link
             href={"/user/video_library"}
             className=" text-islamic-primary hover:bg-islamic-light bg-black text-white px-5 py-3 rounded-[7px] text-[15px]"
           >
-            Get Started
+            ابدأ الآن
           </Link>
         </div>
       </section>

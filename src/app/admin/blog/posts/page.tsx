@@ -95,7 +95,7 @@ const page = () => {
               className=" flex items-center justify-center pt-10 flex-col
             "
             >
-              <div>No Posts Yet!</div>
+              <div>لا توجد مشاركات بعد!</div>
               <div className=" pt-14">
                 <span>
                   <Image
@@ -117,7 +117,7 @@ const page = () => {
                 href={`/admin/blog/${post._id}/post`}
               >
                 <p
-                  className="bg-gray-200 py-2  sm:rounded-full rounded-[20px] pl-4 sm:text-[18px] text-[15px]
+                  className="bg-gray-200 py-2  sm:rounded-full rounded-[20px] px-5 sm:text-[18px] text-[15px] text-end
             "
                 >
                   <div
@@ -131,7 +131,7 @@ const page = () => {
                   />
                 </p>
                 <div
-                  className="pl-4 mt-4 bg-gray-100 min-h-10 sm:rounded-[30px] rounded-[20px] flex items-center sm:text-[16px] text-[14px] py-3"
+                  className="pl-4 mt-4 bg-gray-100 min-h-10 sm:rounded-[30px] rounded-[20px] sm:text-[16px] text-[14px] py-3 text-end px-5"
                   dangerouslySetInnerHTML={{
                     __html:
                       post.post.length > 200

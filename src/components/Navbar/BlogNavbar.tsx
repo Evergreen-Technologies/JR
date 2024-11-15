@@ -3,8 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const BlogNavbar = () => {
   const links = [
-    { label: "New Post", href: "/admin/blog" },
-    { label: "Blog Posts", href: "/admin/blog/posts" },
+    { label: "منشور جديد", href: "/admin/blog" },
+    { label: "منشورات المدونة", href: "/admin/blog/posts" },
   ];
   const current_path3 = usePathname();
 
