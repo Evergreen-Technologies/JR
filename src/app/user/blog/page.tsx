@@ -52,7 +52,7 @@ const page = () => {
       <ul className="w-[90%] flex flex-col item-center justify-center h-full gap-y-3">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full flex-col gap-y-20">
-            <Progress value={progress} className="w-[30%] " />
+            <Progress value={progress} className="w-[90%] " />
           </div>
         )}
         <div>
@@ -72,7 +72,7 @@ const page = () => {
               href={`/user/blog/${post._id}/post`}
             >
               <p
-                className="bg-gray-200 py-2  rounded-[20px] pl-4 sm:text-[18px] text-[16px]
+                className="bg-gray-200 py-2  rounded-[20px] pr-5 sm:text-[18px] text-[16px] text-end
             "
               >
                 <div
@@ -81,7 +81,7 @@ const page = () => {
                   }}
                 />
               </p>
-              <p className="px-4 mt-4 bg-gray-100 min-h-10 rounded-[20px] flex items-center text-[16px] py-3">
+              <p className="px-5 mt-4 bg-gray-100 min-h-10 rounded-[20px] text-[16px] py-3 text-end">
                 <div
                   dangerouslySetInnerHTML={{
                     __html:

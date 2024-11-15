@@ -80,7 +80,7 @@ const page = () => {
       >
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="" className="pl-5 sm:pl-0">
-            Title
+            عنوان
           </label>
           <Editor
             value={post.title}
@@ -100,7 +100,7 @@ const page = () => {
         </div>
         <div className="flex flex-col w-full gap-y-2">
           <label htmlFor="" className="pl-5 sm:pl-0">
-            Post
+            منشور
           </label>
           <Editor
             value={post.post}
@@ -122,7 +122,7 @@ const page = () => {
               buttonEffect();
             }}
           >
-            {!progrees && <>Post</>}
+            {!progrees && <>نشر</>}
             {progrees && (
               <CircularProgress
                 style={{

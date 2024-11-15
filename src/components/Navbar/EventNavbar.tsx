@@ -3,8 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 const EventNavbar = () => {
   const links = [
-    { label: "New Event", href: "/admin/event" },
-    { label: "Event History", href: "/admin/event/events" },
+    { label: "حدث جديد", href: "/admin/event" },
+    { label: "تاريخ الحدث", href: "/admin/event/events" },
   ];
   const current_path3 = usePathname();
 

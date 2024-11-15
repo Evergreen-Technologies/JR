@@ -59,12 +59,12 @@ const page = () => {
       console.log("submitted SuccesFully:", response.data);
 
       if (response.data) {
-        toast.success("Succesfully Edited!");
+        toast.success("تم التعديل بنجاح!");
         setTimeout(() => {
           window.location.href = "/admin/event/events";
         }, 1500);
       } else {
-        toast.error("Something went wrong, please try again!");
+        toast.error("حدث خطأ ما، يرجى المحاولة مرة أخرى!");
       }
       setEvent({
         _id: "",
@@ -105,7 +105,7 @@ const page = () => {
         className="flex flex-col items-center justify-center gap-y-5 sm:w-[80%] w-full"
       >
         <div className="flex flex-col w-full gap-y-2 items-center">
-          <label htmlFor="">Event name</label>
+          <label htmlFor="">اسم الحدث</label>
           <Editor
             value={event.name}
             onTextChange={(e: any) =>
@@ -120,7 +120,7 @@ const page = () => {
           />
         </div>
         <div className="flex flex-col w-full gap-y-2 items-center">
-          <label htmlFor="">Event Details</label>
+          <label htmlFor="">تفاصيل الحدث</label>
           <Editor
             value={event.details}
             onTextChange={(e: any) =>
@@ -136,7 +136,7 @@ const page = () => {
         </div>
 
         <div className="flex flex-col w-full gap-y-2 items-center">
-          <label htmlFor="">Event Loacation</label>
+          <label htmlFor="">موقع الحدث</label>
           <Editor
             value={event.location}
             onTextChange={(e: any) =>
@@ -151,7 +151,7 @@ const page = () => {
           />
         </div>
         <div className="flex flex-col w-full gap-y-2 items-center">
-          <label htmlFor="">Event Date</label>
+          <label htmlFor="">تاريخ الحدث</label>
 
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DateTimePicker", "DateTimePicker"]}>
@@ -172,7 +172,7 @@ const page = () => {
               buttonEffect();
             }}
           >
-            {!progrees && <>Edit Event!</>}
+            {!progrees && <>تعديل الحدث!</>}
             {progrees && (
               <CircularProgress
                 style={{

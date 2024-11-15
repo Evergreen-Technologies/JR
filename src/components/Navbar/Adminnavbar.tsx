@@ -19,10 +19,10 @@ const Adminnavbar = () => {
   console.log(current_path2);
   const links = [
     // { label: "Home", href: "/admin" },
-    { label: "Manage Blog", href: "/admin/blog" },
-    { label: "Manage Content", href: "/admin/upload_content" },
-    { label: "Manage Event", href: "/admin/event" },
-    { label: "Log out", href: "/api/auth/signout" },
+    { label: "إدارة المدونة", href: "/admin/blog" },
+    { label: "إدارة المحتوى", href: "/admin/upload_content" },
+    { label: "إدارة الحدث", href: "/admin/event" },
+    { label: "تسجيل الخروج", href: "/api/auth/signout" },
   ];
 
   const text = "/admin/blog";
@@ -30,7 +30,7 @@ const Adminnavbar = () => {
 
   return (
     <nav className="lg:container lg:w-full lg:mx-auto mx-[20px]  rounded-full mt-5 shadow-xl border-t border-t-gray-200 flex items-center justify-end pr-5 sm:pr-0">
-      <ul className="sm:flex w-full items-center justify-around py-3 hidden">
+      <ul className="sm:flex w-full items-center justify-between py-3 hidden px-4">
         {links.map((link, index) => (
           <li
             key={index}
@@ -42,7 +42,16 @@ const Adminnavbar = () => {
               " border-b-black border-b-[2px] transition-all ease-in-out duration-300  text-black font-medium"
             }`}
           >
-            <Link href={link.href}>{link.label}</Link>
+            <Link
+              href={link.href}
+              className={`${
+                link.href.includes("/signout")
+                  ? "bg-black text-white rounded-full px-4 py-2 -mt-3"
+                  : ""
+              }`}
+            >
+              {link.label}
+            </Link>
           </li>
         ))}
       </ul>

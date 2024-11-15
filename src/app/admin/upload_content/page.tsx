@@ -86,7 +86,7 @@ export default function Home() {
         >
           <div className="flex flex-col">
             <label htmlFor="" className="font-plus pb-2">
-              Title
+              العنوان
             </label>
             <input
               type="text"
@@ -102,7 +102,7 @@ export default function Home() {
           <div className="space-y-[80px]">
             <div className="flex flex-col">
               <label htmlFor="" className="font-plus pb-2 font-medium">
-                Upload Thumbnail
+                تحميل الصورة المصغرة
               </label>
               <UploadDropzone
                 endpoint="attachImage"
@@ -146,7 +146,7 @@ export default function Home() {
             </div>
             <div className="flex flex-col gap-y-1">
               <label htmlFor="" className="font-plus pb-2 font-medium">
-                Upload Video
+                تحميل الفيديو
               </label>
               <UploadDropzone
                 endpoint="attachVideo"
@@ -196,7 +196,7 @@ export default function Home() {
             className="border border-white disabled:bg-[#cfcdcd] bg-black text-white disabled:text-gray-400 font-bold  rounded-[8px] h-10 outline-none disabled:rounded-md mt-10"
             disabled={!save}
           >
-            submit
+            إرسال
           </button>
         </form>
       </motion.div>
@@ -277,7 +277,7 @@ export default function Home() {
                     : submitted.title}
                 </div>
                 <div className="flex justify-end gap-x-2 w-full items-center pr-10">
-                  <span className="text-green-600 font-bold">Submitted</span>
+                  <span className="text-green-600 font-bold">تم الإرسال</span>
                   <span>
                     <Image src={Tick} alt="Tick" className="h-10 w-10" />
                   </span>
