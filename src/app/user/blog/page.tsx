@@ -48,7 +48,7 @@ const page = () => {
     fetchPosts();
   }, []);
   return (
-    <div className=" rounded-[30px] flex justify-center items-start py-14 min-h-[40vh] shadow-2xl lg:container lg:mx-auto mt-10">
+    <div className=" rounded-[30px] flex justify-center items-start py-14 min-h-[40vh] lg:container lg:mx-auto mt-10">
       <ul className="w-[90%] flex flex-col item-center justify-center h-full gap-y-3">
         {!posts[0] && !checkEmpty && (
           <div className="flex items-center justify-center h-full flex-col gap-y-20">
