@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import { Progress } from "@/components/ui/progress";
 import Image from "next/image";
 import EmptyList from "@/../public/better.gif";
-import { BackgroundGradient } from "../../../../components/ui/background-gradient";
+import { BackgroundGradient } from "../../../../../components/ui/background-gradient";
 import { format } from "path";
 
 import {

@@ -26,7 +26,7 @@ export default function Component() {
       username: username.current,
       password: pass.current,
       redirect: true,
-      callbackUrl: "/admin/blog",
+      callbackUrl: "/admin",
     });
   };
   return (
