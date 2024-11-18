@@ -3,6 +3,7 @@
   "Admin_Home_Page!": "የአስተዳዳሪ መነሻ ገጽ!",
   "Are_you": "እርግጠኛ ነዎት ይህን ክስተት መሰረዝ ይፈልጋሉ?",
   "Are_you_sure": "እርግጠኛ ነህ ዘግተህ መውጣት ትፈልጋለህ?",
+  "Calendar_events": "የቀን መቁጠሪያ ክስተቶች",
   "Cancel": "ሰርዝ",
   "Contact": "ተገናኝ",
   "Delete": "ሰርዝ",
@@ -43,8 +44,11 @@
   "Upload_Thumbnail": "ድንክዬ ስቀል",
   "Upload_Video": "ቪዲዮ ስቀል",
   "Username": "የተጠቃሚ ስም",
+  "Video_library": "የቪዲዮ ቤተ-መጽሐፍት",
   "Video_Library": "የቪዲዮ ቤተ-መጽሐፍት",
   "Welcome_to": "እንኳን ወደ ኢስላሚክ የእውቀት ማዕከል በደህና መጡ",
   "what_to_Expect": "ምን መጠበቅ",
-  "your_teacher": "ስለ አስተማሪዎ"
+  "your_teacher": "ስለ አስተማሪዎ",
+  "Publish_Event": "ክስተት አስቀምጥ",
+  "Log_In": "ግባ"
 }

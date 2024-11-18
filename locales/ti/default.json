@@ -3,6 +3,7 @@
   "Admin_Home_Page!": "ኣድሚን መእተዊ ገጽ!",
   "Are_you": "ነዚ Event ክትድምስሶ ከም እትደሊ ርግጸኛ ዲኻ?",
   "Are_you_sure": "ርግጸኛ ዲኻ ክትፈርም ከም እትደሊ?",
+  "Calendar_events": "ናይ ካላንደር ፍጻመታት",
   "Cancel": "ሰርዝ",
   "Contact": "መርከቢ",
   "Delete": "ምድምሳስ",
@@ -43,8 +44,11 @@
   "Upload_Thumbnail": "ንእሽቶ ስእሊ ስቐል",
   "Upload_Video": "ቪድዮ ስቐል",
   "Username": "ስም ተጠቃሚ",
+  "Video_library": "ናይ ቪድዮ ቤተ መጻሕፍቲ",
   "Video_Library": "ቪድዮ ላይብረሪ",
   "Welcome_to": "እንቋዕ ናብ ማእከል ፍልጠት እስልምና ብደሓን መጻእኩም",
   "what_to_Expect": "እንታይ ክንጽበ ኣለና።",
-  "your_teacher": "ብዛዕባ መምህርካ"
+  "your_teacher": "ብዛዕባ መምህርካ",
+  "Publish_Event": "ክስተት አስቀምጥ",
+  "Log_In": "ግባ"
 }

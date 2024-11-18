@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 
 module.exports = {
   images: {
-    domains: ["images.unsplash.com"], // {{ edit_1 }}
+    domains: ["images.unsplash.com", "utfs.io"], // {{ edit_1 }}
   },
   typescript: {
     ignoreBuildErrors: true, // This disables TypeScript type checking during the build

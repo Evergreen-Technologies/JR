@@ -13,12 +13,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import LanguageChanger from "../LanguageChanger";
 
 const Adminnavbar = () => {
   const current_path2 = usePathname();
   console.log(current_path2);
   const links = [
-    { label: "Home", href: "/admin" },
+    // { label: "Home", href: "/admin" },
     { label: "إدارة المدونة", href: "/admin/blog" },
     { label: "إدارة المحتوى", href: "/admin/upload_content" },
     { label: "إدارة الحدث", href: "/admin/event" },
@@ -54,6 +55,7 @@ const Adminnavbar = () => {
             </Link>
           </li>
         ))}
+        <LanguageChanger />
       </ul>
       <Sheet>
         <SheetTrigger asChild>
@@ -79,6 +81,7 @@ const Adminnavbar = () => {
                 </SheetClose>
               </li>
             ))}
+            <LanguageChanger />
           </ul>
         </SheetContent>
       </Sheet>

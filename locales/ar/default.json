@@ -3,6 +3,7 @@
   "Admin_Home_Page!": "الصفحة الرئيسية للإدارة!",
   "Are_you": "هل أنت متأكد أنك تريد حذف هذا الحدث؟",
   "Are_you_sure": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
+  "Calendar_events": "أحداث التقويم",
   "Cancel": "يلغي",
   "Contact": "اتصال",
   "Delete": "يمسح",
@@ -43,8 +44,11 @@
   "Upload_Thumbnail": "تحميل الصورة المصغرة",
   "Upload_Video": "تحميل الفيديو",
   "Username": "اسم المستخدم",
+  "Video_library": "مكتبة الفيديو",
   "Video_Library": "مكتبة الفيديو",
   "Welcome_to": "مرحباً بكم في مركز المعرفة الإسلامية",
   "what_to_Expect": "ماذا تتوقع",
-  "your_teacher": "عن معلمك"
+  "your_teacher": "عن معلمك",
+  "Publish_Event": "نشر الحدث",
+  "Log_In": "تسجيل الدخول"
 }

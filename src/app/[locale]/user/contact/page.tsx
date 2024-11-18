@@ -9,7 +9,6 @@ import initTranslations from "@/app/i18n";
 
 const Connect: React.FC = async ({ params: { locale } }) => {
   const form = useRef<HTMLFormElement | null>(null);
-  const { t, resources } = await initTranslations(locale, ["default"]);
 
   const sendEmail = (e: FormEvent) => {
     e.preventDefault();
@@ -34,6 +33,7 @@ const Connect: React.FC = async ({ params: { locale } }) => {
       form.current.reset();
     }
   };
+  const { t, resources } = await initTranslations(locale, ["default"]);
 
   return (
     <TranslationsProvider

@@ -12,36 +12,34 @@ const Index = async ({ params: { locale } }) => {
   const testimonials = [
     {
       quote:
-        "انتباه دقيق وميزات مبتكرة قامت بتغيير سير عملنا تماما. هذا هو بالضبط ما كنا نبحث عنه.",
-      name: "سارة تشين",
-      designation: "مدير المنتج في تيك فلو",
-      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote: "كان التنفيذ سلساً و超عت توقعاتنا. مرونة المنصة مدهشة.",
-      name: "مايكل رودريغيز",
-      designation: "مدير تكنولوجيا المعلومات في إينوفيت سبير",
-      src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ذا الموقع مخصص لنشر الدروس التي ألقاها سماحة المفتي دكتور جيلان خضر غمدا في مسجد الأنصار على مدار ال ٢٥ عاما الماضية ، ونشر الكتب والمقالات التي كتبها الشيخ مما يجعلها متاحة لطالب العلم. نسأل الله أن يفيدنا من هذا ويوفقنا.",
+      name: "هدفنا",
+
+      src: "https://utfs.io/f/f4ZDSnWtuS7kWrr7ZKJiSEpv9gZDsHUhMC7k2mV1XbPYTq0G",
     },
     {
       quote:
-        "لقد حسنت هذه الحلول من إنتاجية فريقنا بشكل كبير. واجهة المستخدم البسيطة تجعل المهام المعقدة سهلة.",
-      name: "إميلي واتسون",
-      designation: "مدير العمليات في كلاود سكيل",
-      src: "https://images.unsplash.com/photo-1623582854588-d60de57fa33f?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    },
-    {
-      quote: "دعم ممتاز وميزات قوية. نادراً ما تجد منتجاً يفي بكل ما يpromis.",
-      name: "جيمس كيم",
-      designation: "قائد فريق الهندسة في داتا برو",
-      src: "https://images.unsplash.com/photo-1636041293178-808a6762ab39?q=80&w=3464&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ذا الموقع مخصص لنشر الدروس التي ألقاها سماحة المفتي دكتور جيلان خضر غمدا في مسجد الأنصار على مدار ال ٢٥ عاما الماضية ، ونشر الكتب والمقالات التي كتبها الشيخ مما يجعلها متاحة لطالب العلم. نسأل الله أن يفيدنا من هذا ويوفقنا.",
+      name: "هدفنا",
+      src: "https://utfs.io/f/f4ZDSnWtuS7koAHwnVq9kT0UajK1Eqxs85WpO6td2uli4nFe",
     },
     {
       quote:
-        "لقد غيرت قابلية التوسع والأداء لعملنا. نوصي به بشدة لأي عمل ناشئ.",
-      name: "ليزا تومسون",
-      designation: "نائب الرئيس لتقنية المعلومات في فوتشر نت",
-      src: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "ذا الموقع مخصص لنشر الدروس التي ألقاها سماحة المفتي دكتور جيلان خضر غمدا في مسجد الأنصار على مدار ال ٢٥ عاما الماضية ، ونشر الكتب والمقالات التي كتبها الشيخ مما يجعلها متاحة لطالب العلم. نسأل الله أن يفيدنا من هذا ويوفقنا.",
+      name: "هدفنا",
+      src: "https://utfs.io/f/f4ZDSnWtuS7k713M0id53Lmb69hAVwT1OgoQ4iCIrGKUvyRH",
+    },
+    {
+      quote:
+        "ذا الموقع مخصص لنشر الدروس التي ألقاها سماحة المفتي دكتور جيلان خضر غمدا في مسجد الأنصار على مدار ال ٢٥ عاما الماضية ، ونشر الكتب والمقالات التي كتبها الشيخ مما يجعلها متاحة لطالب العلم. نسأل الله أن يفيدنا من هذا ويوفقنا.",
+      name: "هدفنا",
+      src: "https://utfs.io/f/f4ZDSnWtuS7kupz411DXNrVsBvIafo2ZhQRAKtxw4UFl5J0k",
+    },
+    {
+      quote:
+        "ذا الموقع مخصص لنشر الدروس التي ألقاها سماحة المفتي دكتور جيلان خضر غمدا في مسجد الأنصار على مدار ال ٢٥ عاما الماضية ، ونشر الكتب والمقالات التي كتبها الشيخ مما يجعلها متاحة لطالب العلم. نسأل الله أن يفيدنا من هذا ويوفقنا.",
+      name: "هدفنا",
+      src: "https://utfs.io/f/f4ZDSnWtuS7kUw5FqVo0SLwI17NcumT65bR9lFtZvik8gEKD",
     },
   ];
   return (

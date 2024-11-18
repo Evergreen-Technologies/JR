@@ -3,6 +3,7 @@
   "Admin_Home_Page!": "Fuula Manaa Admin!",
   "Are_you": "Taatee kana haquu akka barbaaddu mirkaneeffatteettaa?",
   "Are_you_sure": "Mallatteessuu akka barbaaddu mirkaneeffatteettaa?",
+  "Calendar_events": "Taateewwan kalaandarii",
   "Cancel": "Haquu",
   "Contact": "Quunnamuu",
   "Delete": "Haquu",
@@ -43,8 +44,11 @@
   "Upload_Thumbnail": "Suuraa Xiqqaa Olkaa'i",
   "Upload_Video": "Viidiyoo Olkaa'aa",
   "Username": "Maqaa fayyadamaa",
+  "Video_library": "Mana kitaabaa viidiyoo",
   "Video_Library": "Mana Kitaabaa Viidiyoo",
   "Welcome_to": "Baga gara Giddugala Beekumsa Islaamaa dhuftan",
   "what_to_Expect": "maal Eeguu qabna",
-  "your_teacher": "Waa'ee barsiisaa keetii"
+  "your_teacher": "Waa'ee barsiisaa keetii",
+  "Publish_Event": "Taatee Baasaa",
+  "Log_In": "Galuu"
 }
