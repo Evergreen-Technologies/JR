@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import "../../app/globals.css";
+import "../../app/[locale]/globals.css";
+import LanguageChanger from "../LanguageChanger";
 
 const Navbar = () => {
   const current_path1 = usePathname();
@@ -27,6 +28,7 @@ const Navbar = () => {
             <Link href={link.href}>{link.label}</Link>
           </li>
         ))}
+        <LanguageChanger />
       </ul>
     </nav>
   );
