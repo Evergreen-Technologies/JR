@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev & npx next-video sync -w",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "i18nexus pull &&next build",
+    "start": "i18nexus pull && next start",
+    "lint": "i18nexus pull && next lint"
   },
   "dependencies": {
     "@date-io/dayjs": "^3.0.0",

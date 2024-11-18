@@ -90,50 +90,7 @@ const page = () => {
       {post.title && (
         <div className="w-full  shadow-lg rounded-[20px] p-10">
           <div className="flex justify-end pt-5">
-            <div className="w-1/3 flex justify-end gap-x-3">
-              {/* {current_path.includes("admin") && (
-                <div className="flex gap-x-10 items-center justify-end w-full mb-10">
-                  <span className="relative -top-1">
-                    <Link href={`/admin/blog/${post._id}/edit`}>
-                      <Image src={Edit} alt="Edit post" className="h-5 w-5" />
-                    </Link>
-                  </span>
-                  <span>
-                    <button
-                      onClick={() => {
-                        setpost((prev: post) => {
-                          const updatedPost = {
-                            ...prev,
-                            suspended: !prev.suspended,
-                          };
-                          handleEdit(updatedPost);
-                          return updatedPost;
-                        });
-                      }}
-                    >
-                      <Image
-                        src={post.suspended ? ReallySuspended : Suspend}
-                        alt="Suspend post"
-                        className="h-8 w-8"
-                      />
-                    </button>
-                  </span>
-                  <span>
-                    <button
-                      onClick={() => {
-                        deletePost();
-                      }}
-                    >
-                      <Image
-                        src={Delete}
-                        alt="Delete post"
-                        className="h-8 w-8"
-                      />
-                    </button>
-                  </span>
-                </div>
-              )} */}
-            </div>
+            <div className="w-1/3 flex justify-end gap-x-3"></div>
           </div>
           <p
             className="bg-gray-200 py-2  rounded-full pl-4 text-[18px]
