@@ -1,6 +1,6 @@
 "use client";
 import { UploadButton, UploadDropzone } from "@/utils/uploadthing";
-import "../../app/globals.css";
+import "@/app/[locale]/globals.css";
 import { CSSProperties } from "react";
 import UploadIcon from "../../../public/upload-folder-svgrepo-com (2).svg";
 import { useState } from "react";
